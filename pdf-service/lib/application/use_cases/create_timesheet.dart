@@ -283,7 +283,7 @@ Future<Uint8List> createTimesheet({
                                   flex: 5,
                                   child: pw.Center(
                                     child: pw.Text(
-                                      '${spec.tableHeaderSpec.additionalInfoLabel}:',
+                                      spec.tableHeaderSpec.additionalInfoLabel,
                                       style: pw.TextStyle(
                                         fontWeight: pw.FontWeight.bold,
                                       ),
@@ -312,7 +312,7 @@ Future<Uint8List> createTimesheet({
                                     mainAxisSize: pw.MainAxisSize.min,
                                     children: [
                                       pw.Text(
-                                        spec.footerSpec.additionalInfoLabel,
+                                        '${spec.footerSpec.additionalInfoLabel}:',
                                       ),
                                       pw.SizedBox(width: .2 * PdfPageFormat.cm),
                                     ],
