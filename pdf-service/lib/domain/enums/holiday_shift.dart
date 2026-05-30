@@ -1,0 +1,1 @@
+enum HolidayShift { morning, afternoon }

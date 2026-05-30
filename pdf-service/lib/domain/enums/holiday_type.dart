@@ -1,0 +1,1 @@
+enum HolidayType { required, optional }
