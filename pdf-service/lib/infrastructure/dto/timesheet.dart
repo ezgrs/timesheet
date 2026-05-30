@@ -2,6 +2,9 @@ part of 'models.dart';
 
 @Data()
 abstract class _TimesheetDto {
+  @Field(name: 'title')
+  String get title;
+
   @Field(name: 'year')
   int get year;
 
