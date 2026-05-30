@@ -1,8 +1,8 @@
 class TimesheetHeaderSpec {
   const TimesheetHeaderSpec({
-    this.nameLabel = 'Nome do servidor',
-    this.roleLabel = 'Cargo',
-    this.codeLabel = 'Matrícula',
+    required this.nameLabel,
+    required this.roleLabel,
+    required this.codeLabel,
   });
 
   final String nameLabel;

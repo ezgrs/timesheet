@@ -1,13 +1,13 @@
 class TimesheetTableBodySpec {
   const TimesheetTableBodySpec({
-    this.saturdayLabel = 'Sábado',
-    this.sundayLabel = 'Domingo',
-    this.requiredHolidayLabel = 'FERIADO',
-    this.optionalHolidayLabel = 'FACULTADO',
-    this.annualLeaveLabel = 'FÉRIAS',
-    this.sickLeaveLabel = 'ATESTADO',
-    this.medicalLeaveLabel = 'L. MÉDICA',
-    this.longServiceLeaveLabel = 'L. PRÊMIO',
+    required this.saturdayLabel,
+    required this.sundayLabel,
+    required this.requiredHolidayLabel,
+    required this.optionalHolidayLabel,
+    required this.annualLeaveLabel,
+    required this.sickLeaveLabel,
+    required this.medicalLeaveLabel,
+    required this.longServiceLeaveLabel,
   });
 
   final String saturdayLabel;

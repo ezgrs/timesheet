@@ -1,10 +1,10 @@
 class TimesheetTableHeaderSpec {
   const TimesheetTableHeaderSpec({
-    this.dayLabel = 'Dia',
-    this.enterTimeLabel = 'Hora de\nentrada',
-    this.exitTimeLabel = 'Hora de\nsaída',
-    this.signatureLabel = 'Assinatura',
-    this.additionalInfoLabel = 'Observação',
+    required this.dayLabel,
+    required this.enterTimeLabel,
+    required this.exitTimeLabel,
+    required this.signatureLabel,
+    required this.additionalInfoLabel,
   });
 
   final String dayLabel;

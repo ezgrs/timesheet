@@ -1,8 +1,8 @@
 class TimesheetFooterSpec {
   const TimesheetFooterSpec({
-    this.additionalInfoLabel = 'Observação:',
-    this.employeeSignatureLabel = 'Assinatura do servidor',
-    this.managerSignatureLabel = 'Assinatura do chefe imediato',
+    required this.additionalInfoLabel,
+    required this.employeeSignatureLabel,
+    required this.managerSignatureLabel,
   });
 
   final String additionalInfoLabel;

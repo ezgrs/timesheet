@@ -1,0 +1,29 @@
+subtitle: LISTA DE FREQUÊNCIA
+
+header:
+  name: Nome do servidor
+  role: Cargo
+  code: Matrícula
+
+table:
+  header:
+    day: Dia
+    enterTime: Hora de\nentrada
+    exitTime: Hora de\nsaída
+    signature: Assinatura
+    additionalInfo: Observação
+
+  body:
+    saturday: Sábado
+    sunday: Domingo
+    requiredHoliday: FERIADO
+    optionalHoliday: FACULTADO
+    annualLeave: FÉRIAS
+    sickLeave: ATESTADO
+    medicalLeave: L. MÉDICA
+    longServiceLeave: L. PRÊMIO
+
+footer:
+  additionalInfo: Observação
+  employeeSignature: Assinatura do servidor
+  managerSignature: Assinatura do chefe imediato

@@ -10,8 +10,8 @@ class TimesheetSpec {
     required this.tableBodySpec,
     required this.headerSpec,
     required this.title,
-    this.subtitle = 'LISTA DE FREQUÊNCIA',
-    this.locale = 'pt_BR',
+    required this.subtitle,
+    required this.locale,
   });
 
   final String title;
