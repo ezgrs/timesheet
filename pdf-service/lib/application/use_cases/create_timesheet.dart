@@ -283,7 +283,7 @@ Future<Uint8List> createTimesheet({
                                   flex: 5,
                                   child: pw.Center(
                                     child: pw.Text(
-                                      spec.tableHeaderSpec.additionalInfoLabel,
+                                      '${spec.tableHeaderSpec.additionalInfoLabel}:',
                                       style: pw.TextStyle(
                                         fontWeight: pw.FontWeight.bold,
                                       ),
