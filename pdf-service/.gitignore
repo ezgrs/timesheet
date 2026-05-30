@@ -37,3 +37,5 @@ doc/api/
 # End of https://www.toptal.com/developers/gitignore/api/dart
 
 *.i18n.dart
+*.g.dart
+*.dorm.dart

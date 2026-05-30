@@ -9,12 +9,29 @@ environment:
 dependencies:
   dart_frog: ^1.1.0
   dartx: ^1.2.0
-  i18n: ^4.2.5
+  i18n:
+    git: https://github.com/enzo-santos/i18n.git
   intl: ^0.20.2
   pdf: ^3.12.0
+  dorm_framework: ^1.0.0-alpha.6
+  dorm_annotations: ^1.0.0-alpha.6
 
 dev_dependencies:
   build_runner: ^2.0.0
   dart_frog_lint: ^0.1.0
   mocktail: ^1.0.0
   test: ^1.0.0
+  json_serializable: ^6.8.0
+  dorm_generator: ^1.0.0-alpha.6
+
+dependency_overrides:
+  dorm_annotations:
+    git:
+      url: https://github.com/enzo-santos/dorm.git
+      path: dorm_annotations
+      ref: develop
+  dorm_generator:
+    git:
+      url: https://github.com/enzo-santos/dorm.git
+      path: dorm_generator
+      ref: develop
