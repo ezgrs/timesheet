@@ -5,6 +5,8 @@ import java.util.List;
 import dev.enzosantos.timesheet.domain.entities.Holiday;
 
 public interface HolidayRepository {
+    boolean existsAnyByYear(int year);
+
     List<Holiday> readByMonth(int year, int month);
 
     void removeByYear(int year);

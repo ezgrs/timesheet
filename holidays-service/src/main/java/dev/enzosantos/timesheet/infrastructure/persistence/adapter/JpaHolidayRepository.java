@@ -1,5 +1,6 @@
 package dev.enzosantos.timesheet.infrastructure.persistence.adapter;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import dev.enzosantos.timesheet.application.ports.HolidayRepository;
@@ -27,5 +28,12 @@ public class JpaHolidayRepository implements HolidayRepository {
     @Override
     public void createAll(List<Holiday> holidays) {
         jpaRepository.saveAll(holidays.stream().map(HolidayEntityMapper::toEntity).toList());
+    }
+
+    @Override
+    public boolean existsAnyByYear(int year) {
+        return jpaRepository.existsByDateBetween(
+                LocalDate.of(year, 1, 1),
+                LocalDate.of(year, 12, 31));
     }
 }

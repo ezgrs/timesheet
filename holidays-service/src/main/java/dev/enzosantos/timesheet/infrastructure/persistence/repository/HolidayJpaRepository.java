@@ -20,4 +20,6 @@ public interface HolidayJpaRepository
     @Transactional
     @Query("DELETE FROM HolidayEntity h WHERE YEAR(h.date) = :year")
     void deleteByYear(int year);
+
+    boolean existsByDateBetween(LocalDate start, LocalDate end);
 }
