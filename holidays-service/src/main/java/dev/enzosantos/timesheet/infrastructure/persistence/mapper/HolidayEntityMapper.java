@@ -3,7 +3,7 @@ package dev.enzosantos.timesheet.infrastructure.persistence.mapper;
 import dev.enzosantos.timesheet.domain.entities.Holiday;
 import dev.enzosantos.timesheet.infrastructure.persistence.jpa.HolidayEntity;
 
-public class HolidayMapper {
+public class HolidayEntityMapper {
     public static HolidayEntity toEntity(Holiday domain) {
         HolidayEntity entity = new HolidayEntity();
         entity.setDate(domain.date());

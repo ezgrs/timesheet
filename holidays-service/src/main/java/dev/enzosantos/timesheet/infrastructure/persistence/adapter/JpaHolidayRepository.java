@@ -4,7 +4,7 @@ import java.util.List;
 
 import dev.enzosantos.timesheet.application.ports.HolidayRepository;
 import dev.enzosantos.timesheet.domain.entities.Holiday;
-import dev.enzosantos.timesheet.infrastructure.persistence.mapper.HolidayMapper;
+import dev.enzosantos.timesheet.infrastructure.persistence.mapper.HolidayEntityMapper;
 import dev.enzosantos.timesheet.infrastructure.persistence.repository.HolidayJpaRepository;
 
 public class JpaHolidayRepository implements HolidayRepository {
@@ -16,7 +16,7 @@ public class JpaHolidayRepository implements HolidayRepository {
 
     @Override
     public List<Holiday> readByMonth(int year, int month) {
-        return jpaRepository.findByYearAndMonth(year, month).stream().map(HolidayMapper::toDomain).toList();
+        return jpaRepository.findByYearAndMonth(year, month).stream().map(HolidayEntityMapper::toDomain).toList();
     }
 
     @Override
@@ -26,6 +26,6 @@ public class JpaHolidayRepository implements HolidayRepository {
 
     @Override
     public void createAll(List<Holiday> holidays) {
-        jpaRepository.saveAll(holidays.stream().map(HolidayMapper::toEntity).toList());
+        jpaRepository.saveAll(holidays.stream().map(HolidayEntityMapper::toEntity).toList());
     }
 }

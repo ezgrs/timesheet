@@ -15,7 +15,7 @@ public class HolidaySynchronizer {
         this.fetcher = fetcher;
     }
 
-    void execute(int year) {
+    public void execute(int year) {
         final List<Holiday> holidays = fetcher.fetch(year);
         repository.removeByYear(year);
         repository.createAll(holidays);

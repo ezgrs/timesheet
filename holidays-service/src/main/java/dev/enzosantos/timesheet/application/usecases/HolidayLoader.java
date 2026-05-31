@@ -16,7 +16,7 @@ public class HolidayLoader {
         this.fetcher = fetcher;
     }
 
-    List<Holiday> execute(int year, int month) {
+    public List<Holiday> execute(int year, int month) {
         final List<Holiday> holidays = repository.readByMonth(year, month);
         if (!holidays.isEmpty())
             return holidays;
