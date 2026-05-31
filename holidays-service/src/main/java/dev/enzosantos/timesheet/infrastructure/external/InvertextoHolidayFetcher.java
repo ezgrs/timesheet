@@ -36,7 +36,7 @@ public class InvertextoHolidayFetcher implements HolidayFetcher {
     public List<Holiday> fetch(int year) {
         UriComponentsBuilder builder = UriComponentsBuilder
                 .fromUriString("https://api.invertexto.com")
-                .path("/v1/holidays")
+                .pathSegment("v1", "holidays", String.valueOf(year))
                 .queryParam("token", token);
         final String url = maybeState.map(state -> builder.queryParam("state", state)).orElse(builder).build()
                 .toUriString();
