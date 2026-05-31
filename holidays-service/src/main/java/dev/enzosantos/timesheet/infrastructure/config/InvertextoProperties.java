@@ -11,7 +11,15 @@ public class InvertextoProperties {
         return token;
     }
 
+    public void setToken(String token) {
+        this.token = token;
+    }
+
     public String getState() {
         return state;
+    }
+
+    public void setState(String state) {
+        this.state = state;
     }
 }
