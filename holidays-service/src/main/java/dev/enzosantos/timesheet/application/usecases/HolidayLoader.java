@@ -18,12 +18,13 @@ public class HolidayLoader {
 
     List<Holiday> execute(int year, int month) {
         final List<Holiday> holidays = repository.readByMonth(year, month);
-        if (!holidays.isEmpty()) return holidays;
+        if (!holidays.isEmpty())
+            return holidays;
         final List<Holiday> yearHolidays = fetcher.fetch(year);
         repository.createAll(yearHolidays);
         return yearHolidays
-            .stream()
-            .filter(holiday -> holiday.date().getYear() == year && holiday.date().getMonthValue() == month)
-            .collect(Collectors.toList());
+                .stream()
+                .filter(holiday -> holiday.date().getYear() == year && holiday.date().getMonthValue() == month)
+                .collect(Collectors.toList());
     }
 }

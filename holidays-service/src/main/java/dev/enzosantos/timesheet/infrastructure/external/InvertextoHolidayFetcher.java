@@ -15,12 +15,12 @@ import dev.enzosantos.timesheet.domain.enums.HolidayScope;
 import dev.enzosantos.timesheet.domain.enums.HolidayType;
 
 final record InvertextoHolidayDTO(
-    String date,
-    String name,
-    String type,
-    String level,
-    String law
-) {}
+        String date,
+        String name,
+        String type,
+        String level,
+        String law) {
+}
 
 @Component
 public class InvertextoHolidayFetcher implements HolidayFetcher {
@@ -37,10 +37,11 @@ public class InvertextoHolidayFetcher implements HolidayFetcher {
     @Override
     public List<Holiday> fetch(int year) {
         UriComponentsBuilder builder = UriComponentsBuilder
-            .fromUriString("https://api.invertexto.com")
-            .path("/v1/holidays")
-            .queryParam("token", token);
-        final String url = maybeState.map(state -> builder.queryParam("state", state)).orElse(builder).build().toUriString();
+                .fromUriString("https://api.invertexto.com")
+                .path("/v1/holidays")
+                .queryParam("token", token);
+        final String url = maybeState.map(state -> builder.queryParam("state", state)).orElse(builder).build()
+                .toUriString();
 
         InvertextoHolidayDTO[] response;
         try {
@@ -63,7 +64,8 @@ public class InvertextoHolidayFetcher implements HolidayFetcher {
                             type = HolidayType.optional;
                             break;
                         default:
-                            throw new RuntimeException("External API error: unexpected holiday type (" + holiday.type() + ")");
+                            throw new RuntimeException(
+                                    "External API error: unexpected holiday type (" + holiday.type() + ")");
                     }
                     final HolidayScope scope;
                     switch (holiday.level()) {
@@ -74,7 +76,8 @@ public class InvertextoHolidayFetcher implements HolidayFetcher {
                             scope = HolidayScope.state;
                             break;
                         default:
-                            throw new RuntimeException("External API error: unexpected holiday scope (" + holiday.level() + ")");
+                            throw new RuntimeException(
+                                    "External API error: unexpected holiday scope (" + holiday.level() + ")");
                     }
                     return new Holiday(date, holiday.name(), type, scope);
                 })

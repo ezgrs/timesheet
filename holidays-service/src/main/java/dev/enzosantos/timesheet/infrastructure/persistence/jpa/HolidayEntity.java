@@ -29,7 +29,8 @@ public class HolidayEntity {
     @Column(name = "type", nullable = false)
     private HolidayType type;
 
-    public HolidayEntity() {}
+    public HolidayEntity() {
+    }
 
     public HolidayEntity(LocalDate date, HolidayScope scope, String name, HolidayType type) {
         this.date = date;
@@ -38,15 +39,35 @@ public class HolidayEntity {
         this.type = type;
     }
 
-    public LocalDate getDate() { return date; }
-    public void setDate(LocalDate date) { this.date = date; }
+    public LocalDate getDate() {
+        return date;
+    }
 
-    public HolidayScope getScope() { return scope; }
-    public void setScope(HolidayScope scope) { this.scope = scope; }
+    public void setDate(LocalDate date) {
+        this.date = date;
+    }
 
-    public String getName() { return name; }
-    public void setName(String name) { this.name = name; }
+    public HolidayScope getScope() {
+        return scope;
+    }
 
-    public HolidayType getType() { return type; }
-    public void setType(HolidayType type) { this.type = type; }
+    public void setScope(HolidayScope scope) {
+        this.scope = scope;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public HolidayType getType() {
+        return type;
+    }
+
+    public void setType(HolidayType type) {
+        this.type = type;
+    }
 }
