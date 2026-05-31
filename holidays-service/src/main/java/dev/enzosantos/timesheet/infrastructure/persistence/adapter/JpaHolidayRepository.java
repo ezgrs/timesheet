@@ -22,7 +22,9 @@ public class JpaHolidayRepository implements HolidayRepository {
 
     @Override
     public void removeByYear(int year) {
-        jpaRepository.deleteByYear(year);
+        jpaRepository.deleteByDateBetween(
+                LocalDate.of(year, 1, 1),
+                LocalDate.of(year, 12, 31));
     }
 
     @Override
