@@ -5,7 +5,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
-import org.springframework.stereotype.Component;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
 
@@ -22,7 +21,6 @@ final record InvertextoHolidayDTO(
         String law) {
 }
 
-@Component
 public class InvertextoHolidayFetcher implements HolidayFetcher {
     private final RestTemplate restTemplate;
     private final String token;
