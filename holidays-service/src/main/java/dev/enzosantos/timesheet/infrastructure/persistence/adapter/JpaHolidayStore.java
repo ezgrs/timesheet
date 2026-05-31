@@ -3,15 +3,15 @@ package dev.enzosantos.timesheet.infrastructure.persistence.adapter;
 import java.time.LocalDate;
 import java.util.List;
 
-import dev.enzosantos.timesheet.application.ports.HolidayRepository;
+import dev.enzosantos.timesheet.application.ports.HolidayStore;
 import dev.enzosantos.timesheet.domain.entities.Holiday;
 import dev.enzosantos.timesheet.infrastructure.persistence.mapper.HolidayEntityMapper;
 import dev.enzosantos.timesheet.infrastructure.persistence.repository.HolidayJpaRepository;
 
-public class JpaHolidayRepository implements HolidayRepository {
+public class JpaHolidayStore implements HolidayStore {
     private final HolidayJpaRepository jpaRepository;
 
-    public JpaHolidayRepository(HolidayJpaRepository jpaRepository) {
+    public JpaHolidayStore(HolidayJpaRepository jpaRepository) {
         this.jpaRepository = jpaRepository;
     }
 

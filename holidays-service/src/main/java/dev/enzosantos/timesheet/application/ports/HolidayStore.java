@@ -4,7 +4,7 @@ import java.util.List;
 
 import dev.enzosantos.timesheet.domain.entities.Holiday;
 
-public interface HolidayRepository {
+public interface HolidayStore {
     boolean existsAnyByYear(int year);
 
     List<Holiday> readByMonth(int year, int month);

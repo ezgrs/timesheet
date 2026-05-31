@@ -8,11 +8,11 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.web.client.RestTemplate;
 
 import dev.enzosantos.timesheet.application.ports.HolidayFetcher;
-import dev.enzosantos.timesheet.application.ports.HolidayRepository;
+import dev.enzosantos.timesheet.application.ports.HolidayStore;
 import dev.enzosantos.timesheet.application.usecases.HolidayLoader;
 import dev.enzosantos.timesheet.application.usecases.HolidaySynchronizer;
 import dev.enzosantos.timesheet.infrastructure.external.InvertextoHolidayFetcher;
-import dev.enzosantos.timesheet.infrastructure.persistence.adapter.JpaHolidayRepository;
+import dev.enzosantos.timesheet.infrastructure.persistence.adapter.JpaHolidayStore;
 import dev.enzosantos.timesheet.infrastructure.persistence.repository.HolidayJpaRepository;
 
 @Configuration
@@ -29,17 +29,17 @@ class HolidayConfig {
     }
 
     @Bean
-    HolidayRepository repository(HolidayJpaRepository jpaRepository) {
-        return new JpaHolidayRepository(jpaRepository);
+    HolidayStore store(HolidayJpaRepository jpaRepository) {
+        return new JpaHolidayStore(jpaRepository);
     }
 
     @Bean
-    HolidayLoader loader(HolidayRepository repository, HolidayFetcher fetcher) {
-        return new HolidayLoader(repository, fetcher);
+    HolidayLoader loader(HolidayStore store, HolidayFetcher fetcher) {
+        return new HolidayLoader(store, fetcher);
     }
 
     @Bean
-    HolidaySynchronizer synchronizer(HolidayRepository repository, HolidayFetcher fetcher) {
-        return new HolidaySynchronizer(repository, fetcher);
+    HolidaySynchronizer synchronizer(HolidayStore store, HolidayFetcher fetcher) {
+        return new HolidaySynchronizer(store, fetcher);
     }
 }
