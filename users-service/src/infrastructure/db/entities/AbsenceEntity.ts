@@ -8,7 +8,7 @@ export class AbsenceEntity extends BaseEntity {
     id!: number
 
     @ManyToOne(() => EmployeeEntity, (employee) => employee.absences)
-    @JoinColumn({ name: "employeeId" })
+    @JoinColumn({ name: "employeeid" })
     employee!: EmployeeEntity[]
 
     @Column({name: "startdate", type: "date"})
