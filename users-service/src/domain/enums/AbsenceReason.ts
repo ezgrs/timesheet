@@ -1,0 +1,1 @@
+export type AbsenceReason = "annualLeave" | "sickLeave" | "medicalLeave" | "longServiceLeave"
