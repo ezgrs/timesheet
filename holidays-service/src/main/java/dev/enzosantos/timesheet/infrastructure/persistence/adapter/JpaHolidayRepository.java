@@ -17,7 +17,9 @@ public class JpaHolidayRepository implements HolidayRepository {
 
     @Override
     public List<Holiday> readByMonth(int year, int month) {
-        return jpaRepository.findByYearAndMonth(year, month).stream().map(HolidayEntityMapper::toDomain).toList();
+        final LocalDate start = LocalDate.of(year, month, 1);
+        return jpaRepository.findByDateBetween(start, start.withDayOfMonth(start.lengthOfMonth())).stream()
+                .map(HolidayEntityMapper::toDomain).toList();
     }
 
     @Override
