@@ -2,23 +2,24 @@ import { Injectable } from "@nestjs/common"
 import { HolidayStore } from "../../../application/ports/HolidayStore"
 import { Holiday } from "../../../domain/entities/Holiday"
 import { HolidayMapper } from "../../db/mappers/HolidayMapper"
-import dataSource from "../../db/data-source"
 import { HolidayEntity } from "../../db/entities/HolidayEntity"
-import { Between } from "typeorm"
+import { Between, DataSource } from "typeorm"
 
 @Injectable()
 export class TypeORMHolidayStore implements HolidayStore {
+    constructor(private readonly dataSource: DataSource) {}
+
     async create(data: Holiday): Promise<void> {
         const entity = HolidayMapper.toEntity(data)
         await entity.save()
     }
 
     async delete(id: string): Promise<void> {
-        await dataSource.manager.delete(HolidayEntity, { id })
+        await this.dataSource.manager.delete(HolidayEntity, { id })
     }
 
     async readAll(year: number, month: number): Promise<Holiday[]> {
-        const entities = await dataSource.manager.find(HolidayEntity, {
+        const entities = await this.dataSource.manager.find(HolidayEntity, {
             where: {
                 date: Between(
                     new Date(Date.UTC(year, month - 1, 1)),
