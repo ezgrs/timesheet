@@ -1,6 +1,5 @@
 import { Holiday } from "@/domain/entities/holiday"
 import { HolidayEntity } from "../entities/holiday.entity"
-import { HolidayShiftEntity } from "../entities/holiday-shift.entity"
 
 export namespace HolidayMapper {
     export function toDomain(entity: HolidayEntity): Holiday {
@@ -17,13 +16,7 @@ export namespace HolidayMapper {
         entity.id = domain.id
         entity.name = domain.name
         entity.date = domain.date
-        entity.shift =
-            domain.shift == null
-                ? null
-                : {
-                      am: HolidayShiftEntity.am,
-                      pm: HolidayShiftEntity.pm,
-                  }[domain.shift]
+        entity.shift = domain.shift
         return entity
     }
 }

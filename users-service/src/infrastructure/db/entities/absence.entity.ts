@@ -7,7 +7,7 @@ import {
     PrimaryGeneratedColumn,
 } from "typeorm"
 import { EmployeeEntity } from "./employee.entity"
-import { AbsenceReasonEntity } from "./absence-reason.entity"
+import { AbsenceReason, absenceReasons } from "@/domain/enums/absence-reason"
 
 @Entity({ name: "absences" })
 export class AbsenceEntity extends BaseEntity {
@@ -30,8 +30,8 @@ export class AbsenceEntity extends BaseEntity {
     @Column({
         name: "reason",
         type: "enum",
-        enum: AbsenceReasonEntity,
+        enum: absenceReasons,
         nullable: true,
     })
-    reason!: AbsenceReasonEntity | null
+    reason!: AbsenceReason | null
 }

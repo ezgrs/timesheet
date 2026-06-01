@@ -1,5 +1,5 @@
+import { HolidayShift, holidayShifts } from "@/domain/enums/holiday-shift"
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm"
-import { HolidayShiftEntity } from "./holiday-shift.entity"
 
 @Entity({ name: "holidays" })
 export class HolidayEntity extends BaseEntity {
@@ -15,8 +15,8 @@ export class HolidayEntity extends BaseEntity {
     @Column({
         name: "shift",
         type: "enum",
-        enum: HolidayShiftEntity,
+        enum: holidayShifts,
         nullable: true,
     })
-    shift!: HolidayShiftEntity | null
+    shift!: HolidayShift | null
 }
