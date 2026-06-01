@@ -19,7 +19,7 @@ import "dotenv/config"
             username: process.env.DATABASE_USERNAME,
             password: process.env.DATABASE_PASSWORD,
             database: process.env.DATABASE_NAME,
-            entities: ["src/infrastructure/db/entities/*Entity.ts"],
+            entities: ["src/infrastructure/db/entities/*.entity.ts"],
             migrations: ["src/infrastructure/db/migrations/*.ts"],
         }),
     ],
