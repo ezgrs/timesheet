@@ -1,6 +1,6 @@
 import { Controller, Get, Post, Body, Delete, Param } from "@nestjs/common"
-import { TypeORMEmployeeRepository } from "../services/TypeORMEmployeeRepository"
-import { type CreateEmployeeDTO } from "../dtos/CreateEmployeeDTO"
+import { TypeORMEmployeeRepository } from "../services/typeorm-employee.repository"
+import { type CreateEmployeeDTO } from "../dtos/create-employee.dto"
 import { randomUUID } from "crypto"
 
 @Controller("employees")

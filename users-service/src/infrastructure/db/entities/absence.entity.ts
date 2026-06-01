@@ -6,8 +6,8 @@ import {
     ManyToOne,
     PrimaryGeneratedColumn,
 } from "typeorm"
-import { EmployeeEntity } from "./EmployeeEntity"
-import { AbsenceReasonEntity } from "./AbsenceReasonEntity"
+import { EmployeeEntity } from "./employee.entity"
+import { AbsenceReasonEntity } from "./absence-reason.entity"
 
 @Entity({ name: "absences" })
 export class AbsenceEntity extends BaseEntity {

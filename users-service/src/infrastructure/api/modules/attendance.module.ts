@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common"
-import { AttendanceController } from "../controllers/AttendanceController"
-import { TypeORMAttendanceRepository } from "../services/TypeORMAttendanceRepository"
+import { AttendanceController } from "../controllers/attendance.controller"
+import { TypeORMAttendanceRepository } from "../services/typeorm-attendance.repository"
 
 @Module({
     controllers: [AttendanceController],

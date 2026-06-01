@@ -1,4 +1,4 @@
-import { Holiday } from "../../domain/entities/Holiday"
+import { Holiday } from "../../domain/entities/holiday"
 
 export interface HolidayRepository {
     create(data: Holiday): Promise<void>

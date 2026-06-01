@@ -1,5 +1,5 @@
-import { Absence } from "./Absence"
-import { Employee } from "./Employee"
+import { Absence } from "./absence"
+import { Employee } from "./employee"
 
 export type Attendance = {
     employee: Employee

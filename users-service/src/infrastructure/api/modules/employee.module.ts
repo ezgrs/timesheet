@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common"
-import { EmployeeController } from "../controllers/EmployeeController"
-import { TypeORMEmployeeRepository } from "../services/TypeORMEmployeeRepository"
+import { EmployeeController } from "../controllers/employee.controller"
+import { TypeORMEmployeeRepository } from "../services/typeorm-employee.repository"
 
 @Module({
     controllers: [EmployeeController],

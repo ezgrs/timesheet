@@ -1,6 +1,6 @@
-import { Holiday } from "../../../domain/entities/Holiday"
-import { HolidayEntity } from "../entities/HolidayEntity"
-import { HolidayShiftEntity } from "../entities/HolidayShiftEntity"
+import { Holiday } from "../../../domain/entities/holiday"
+import { HolidayEntity } from "../entities/holiday.entity"
+import { HolidayShiftEntity } from "../entities/holiday-shift.entity"
 
 export namespace HolidayMapper {
     export function toDomain(entity: HolidayEntity): Holiday {

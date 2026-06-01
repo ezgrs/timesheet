@@ -1,10 +1,10 @@
 import { Injectable } from "@nestjs/common"
-import { AttendanceRepository } from "../../../application/ports/AttendanceRepository"
-import { Attendance } from "../../../domain/entities/Attendance"
+import { AttendanceRepository } from "../../../application/ports/attendance.repository"
+import { Attendance } from "../../../domain/entities/attendance"
 import { DataSource, LessThan, MoreThanOrEqual } from "typeorm"
-import { EmployeeEntity } from "../../db/entities/EmployeeEntity"
-import { EmployeeMapper } from "../../db/mappers/EmployeeMapper"
-import { AbsenceMapper } from "../../db/mappers/AbsenceMapper"
+import { EmployeeEntity } from "../../db/entities/employee.entity"
+import { EmployeeMapper } from "../../db/mappers/employee.mapper"
+import { AbsenceMapper } from "../../db/mappers/absence.mapper"
 
 @Injectable()
 export class TypeORMAttendanceRepository implements AttendanceRepository {

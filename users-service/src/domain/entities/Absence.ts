@@ -1,4 +1,4 @@
-import { AbsenceReason } from "../enums/AbsenceReason"
+import { AbsenceReason } from "../enums/absence-reason"
 
 export type Absence = {
     id: string

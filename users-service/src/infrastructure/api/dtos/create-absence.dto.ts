@@ -1,4 +1,4 @@
-import { AbsenceReason } from "../../../domain/enums/AbsenceReason"
+import { AbsenceReason } from "../../../domain/enums/absence-reason"
 
 export type CreateAbsenceDTO = {
     employeeId: string

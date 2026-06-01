@@ -1,5 +1,5 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm"
-import { HolidayShiftEntity } from "./HolidayShiftEntity"
+import { HolidayShiftEntity } from "./holiday-shift.entity"
 
 @Entity({ name: "holidays" })
 export class HolidayEntity extends BaseEntity {

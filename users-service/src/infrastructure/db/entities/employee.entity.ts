@@ -5,7 +5,7 @@ import {
     OneToMany,
     PrimaryGeneratedColumn,
 } from "typeorm"
-import { AbsenceEntity } from "./AbsenceEntity"
+import { AbsenceEntity } from "./absence.entity"
 
 @Entity({ name: "employees" })
 export class EmployeeEntity extends BaseEntity {

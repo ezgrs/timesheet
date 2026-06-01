@@ -1,8 +1,8 @@
 import { Module } from "@nestjs/common"
-import { AbsenceModule } from "./AbsenceModule"
-import { AttendanceModule } from "./AttendanceModule"
-import { EmployeeModule } from "./EmployeeModule"
-import { HolidayModule } from "./HolidayModule"
+import { AbsenceModule } from "./absence.module"
+import { AttendanceModule } from "./attendance.module"
+import { EmployeeModule } from "./employee.module"
+import { HolidayModule } from "./holiday.module"
 import { TypeOrmModule } from "@nestjs/typeorm"
 
 @Module({
