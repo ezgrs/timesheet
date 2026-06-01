@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { EmployeeStore } from "../../../application/ports/EmployeeStore";
 import { Employee } from "../../../domain/entities/Employee";
-import { EmployeeMapper } from "../mappers/EmployeeMapper";
-import dataSource from "../data-source";
-import { EmployeeEntity } from "../entities/EmployeeEntity";
+import { EmployeeMapper } from "../../db/mappers/EmployeeMapper";
+import dataSource from "../../db/data-source";
+import { EmployeeEntity } from "../../db/entities/EmployeeEntity";
 
 @Injectable()
 export class TypeORMEmployeeStore implements EmployeeStore {

@@ -1,11 +1,11 @@
 import { Injectable } from "@nestjs/common";
 import { AttendanceStore } from "../../../application/ports/AttendanceStore";
 import { Attendance } from "../../../domain/entities/Attendance";
-import dataSource from "../data-source";
+import dataSource from "../../db/data-source";
 import { LessThan, MoreThanOrEqual } from "typeorm";
-import { EmployeeEntity } from "../entities/EmployeeEntity";
-import { EmployeeMapper } from "../mappers/EmployeeMapper";
-import { AbsenceMapper } from "../mappers/AbsenceMapper";
+import { EmployeeEntity } from "../../db/entities/EmployeeEntity";
+import { EmployeeMapper } from "../../db/mappers/EmployeeMapper";
+import { AbsenceMapper } from "../../db/mappers/AbsenceMapper";
 
 @Injectable()
 export class TypeORMAttendanceStore implements AttendanceStore {
@@ -27,5 +27,4 @@ export class TypeORMAttendanceStore implements AttendanceStore {
             absences: employeeEntity.absences.map(AbsenceMapper.toDomain),
         }))
     }
-
 }

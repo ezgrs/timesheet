@@ -1,9 +1,9 @@
 import { Injectable } from "@nestjs/common";
 import { HolidayStore } from "../../../application/ports/HolidayStore";
 import { Holiday } from "../../../domain/entities/Holiday";
-import { HolidayMapper } from "../mappers/HolidayMapper";
-import dataSource from "../data-source";
-import { HolidayEntity } from "../entities/HolidayEntity";
+import { HolidayMapper } from "../../db/mappers/HolidayMapper";
+import dataSource from "../../db/data-source";
+import { HolidayEntity } from "../../db/entities/HolidayEntity";
 import { Between } from "typeorm";
 
 @Injectable()
@@ -26,5 +26,4 @@ export class TypeORMHolidayStore implements HolidayStore {
         })
         return entities.map(HolidayMapper.toDomain)
     }
-
 }
