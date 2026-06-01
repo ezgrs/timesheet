@@ -1,9 +1,9 @@
 import { Module } from "@nestjs/common"
 import { EmployeeController } from "../controllers/EmployeeController"
-import { TypeORMEmployeeStore } from "../services/TypeORMEmployeeStore"
+import { TypeORMEmployeeRepository } from "../services/TypeORMEmployeeRepository"
 
 @Module({
     controllers: [EmployeeController],
-    providers: [TypeORMEmployeeStore],
+    providers: [TypeORMEmployeeRepository],
 })
 export class EmployeeModule {}

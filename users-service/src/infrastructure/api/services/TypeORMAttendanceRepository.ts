@@ -1,5 +1,5 @@
 import { Injectable } from "@nestjs/common"
-import { AttendanceStore } from "../../../application/ports/AttendanceStore"
+import { AttendanceRepository } from "../../../application/ports/AttendanceRepository"
 import { Attendance } from "../../../domain/entities/Attendance"
 import { DataSource, LessThan, MoreThanOrEqual } from "typeorm"
 import { EmployeeEntity } from "../../db/entities/EmployeeEntity"
@@ -7,7 +7,7 @@ import { EmployeeMapper } from "../../db/mappers/EmployeeMapper"
 import { AbsenceMapper } from "../../db/mappers/AbsenceMapper"
 
 @Injectable()
-export class TypeORMAttendanceStore implements AttendanceStore {
+export class TypeORMAttendanceRepository implements AttendanceRepository {
     constructor(private readonly dataSource: DataSource) {}
 
     async readAll(year: number, month: number): Promise<Attendance[]> {

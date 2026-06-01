@@ -1,15 +1,15 @@
 import { Controller, Post, Body, Delete, Param } from "@nestjs/common"
-import { TypeORMAbsenceStore } from "../services/TypeORMAbsenceStore"
+import { TypeORMAbsenceRepository } from "../services/TypeORMAbsenceRepository"
 import { type CreateAbsenceDTO } from "../dtos/CreateAbsenceDTO"
 import { randomUUID } from "crypto"
 
 @Controller("absences")
 export class AbsenceController {
-    constructor(private store: TypeORMAbsenceStore) {}
+    constructor(private repository: TypeORMAbsenceRepository) {}
 
     @Post()
     async create(@Body() dto: CreateAbsenceDTO) {
-        await this.store.create({
+        await this.repository.create({
             id: randomUUID(),
             employeeId: dto.employeeId,
             startDate: dto.startDate,
@@ -21,6 +21,6 @@ export class AbsenceController {
     @Delete(":id")
     async delete(@Param() params: any) {
         const id: string = params.id
-        await this.store.delete(id)
+        await this.repository.delete(id)
     }
 }

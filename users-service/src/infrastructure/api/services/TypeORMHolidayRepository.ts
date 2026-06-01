@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common"
-import { HolidayStore } from "../../../application/ports/HolidayStore"
+import { HolidayRepository } from "../../../application/ports/HolidayRepository"
 import { Holiday } from "../../../domain/entities/Holiday"
 import { HolidayMapper } from "../../db/mappers/HolidayMapper"
 import { HolidayEntity } from "../../db/entities/HolidayEntity"
 import { Between, DataSource } from "typeorm"
 
 @Injectable()
-export class TypeORMHolidayStore implements HolidayStore {
+export class TypeORMHolidayRepository implements HolidayRepository {
     constructor(private readonly dataSource: DataSource) {}
 
     async create(data: Holiday): Promise<void> {

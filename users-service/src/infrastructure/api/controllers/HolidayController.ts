@@ -1,15 +1,15 @@
 import { Controller, Post, Body, Delete, Param } from "@nestjs/common"
-import { TypeORMHolidayStore } from "../services/TypeORMHolidayStore"
+import { TypeORMHolidayRepository } from "../services/TypeORMHolidayRepository"
 import { type CreateHolidayDTO } from "../dtos/CreateHolidayDTO"
 import { randomUUID } from "crypto"
 
 @Controller("holidays")
 export class HolidayController {
-    constructor(private store: TypeORMHolidayStore) {}
+    constructor(private repository: TypeORMHolidayRepository) {}
 
     @Post()
     async create(@Body() dto: CreateHolidayDTO) {
-        await this.store.create({
+        await this.repository.create({
             id: randomUUID(),
             name: dto.name,
             date: dto.date,
@@ -20,6 +20,6 @@ export class HolidayController {
     @Delete(":id")
     async delete(@Param() params: any) {
         const id: string = params.id
-        await this.store.delete(id)
+        await this.repository.delete(id)
     }
 }

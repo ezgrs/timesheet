@@ -1,12 +1,12 @@
 import { Injectable } from "@nestjs/common"
-import { AbsenceStore } from "../../../application/ports/AbsenceStore"
+import { AbsenceRepository } from "../../../application/ports/AbsenceRepository"
 import { Absence } from "../../../domain/entities/Absence"
 import { AbsenceMapper } from "../../db/mappers/AbsenceMapper"
 import { AbsenceEntity } from "../../db/entities/AbsenceEntity"
 import { DataSource } from "typeorm"
 
 @Injectable()
-export class TypeORMAbsenceStore implements AbsenceStore {
+export class TypeORMAbsenceRepository implements AbsenceRepository {
     constructor(private readonly dataSource: DataSource) {}
 
     async create(data: Absence): Promise<void> {

@@ -1,5 +1,5 @@
 import { Attendance } from "../../domain/entities/Attendance"
 
-export interface AttendanceStore {
+export interface AttendanceRepository {
     readAll(year: number, month: number): Promise<Attendance[]>
 }

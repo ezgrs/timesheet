@@ -1,9 +1,9 @@
 import { Module } from "@nestjs/common"
 import { HolidayController } from "../controllers/HolidayController"
-import { TypeORMHolidayStore } from "../services/TypeORMHolidayStore"
+import { TypeORMHolidayRepository } from "../services/TypeORMHolidayRepository"
 
 @Module({
     controllers: [HolidayController],
-    providers: [TypeORMHolidayStore],
+    providers: [TypeORMHolidayRepository],
 })
 export class HolidayModule {}

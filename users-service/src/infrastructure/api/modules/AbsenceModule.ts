@@ -1,9 +1,9 @@
 import { Module } from "@nestjs/common"
 import { AbsenceController } from "../controllers/AbsenceController"
-import { TypeORMAbsenceStore } from "../services/TypeORMAbsenceStore"
+import { TypeORMAbsenceRepository } from "../services/TypeORMAbsenceRepository"
 
 @Module({
     controllers: [AbsenceController],
-    providers: [TypeORMAbsenceStore],
+    providers: [TypeORMAbsenceRepository],
 })
 export class AbsenceModule {}
