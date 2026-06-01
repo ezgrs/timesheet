@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner } from "typeorm"
+import { type MigrationInterface, type QueryRunner } from "typeorm"
 
 export class RenameUUIDFK1780257734682 implements MigrationInterface {
     name = "RenameUUIDFK1780257734682"

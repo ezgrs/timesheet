@@ -1,4 +1,4 @@
-import { MigrationInterface, QueryRunner } from "typeorm"
+import { type MigrationInterface, type QueryRunner } from "typeorm"
 
 export class NormalizeAbsencesFKName1780258236980 implements MigrationInterface {
     name = "NormalizeAbsencesFKName1780258236980"
