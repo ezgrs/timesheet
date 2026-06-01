@@ -4,6 +4,7 @@ import { AttendanceModule } from "./attendance.module"
 import { EmployeeModule } from "./employee.module"
 import { HolidayModule } from "./holiday.module"
 import { TypeOrmModule } from "@nestjs/typeorm"
+import "dotenv/config"
 
 @Module({
     imports: [
