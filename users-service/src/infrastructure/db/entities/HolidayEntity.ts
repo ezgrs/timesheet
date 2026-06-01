@@ -1,17 +1,22 @@
 import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 import { HolidayShiftEntity } from "./HolidayShiftEntity"
 
-@Entity({name: "holidays"})
+@Entity({ name: "holidays" })
 export class HolidayEntity extends BaseEntity {
-    @PrimaryGeneratedColumn("uuid", {name: "id"})
+    @PrimaryGeneratedColumn("uuid", { name: "id" })
     id!: string
 
-    @Column({name: "date", type: "date"})
+    @Column({ name: "date", type: "date" })
     date!: Date
 
-    @Column({name: "name", type: "varchar", length: 255})
+    @Column({ name: "name", type: "varchar", length: 255 })
     name!: string
 
-    @Column({name: "shift", type: "enum", enum: HolidayShiftEntity, nullable: true})
+    @Column({
+        name: "shift",
+        type: "enum",
+        enum: HolidayShiftEntity,
+        nullable: true,
+    })
     shift!: HolidayShiftEntity | null
 }

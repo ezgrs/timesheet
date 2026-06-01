@@ -1,1 +1,1 @@
-export type HolidayShift = "am" | "pm" 
+export type HolidayShift = "am" | "pm"
