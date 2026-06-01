@@ -7,6 +7,9 @@ export class AbsenceEntity extends BaseEntity {
     @PrimaryGeneratedColumn("uuid", {name: "id"})
     id!: string
 
+    @Column({name: "employeeid", type: "uuid"})
+    employeeId!: string
+
     @ManyToOne(() => EmployeeEntity, (employee) => employee.absences)
     @JoinColumn({ name: "employeeid" })
     employee!: EmployeeEntity
