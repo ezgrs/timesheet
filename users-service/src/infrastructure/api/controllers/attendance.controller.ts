@@ -10,9 +10,10 @@ export class AttendanceController {
     ) {}
 
     @Get(":year/:month")
-    async findAll(@Param() params: any): Promise<Attendance[]> {
-        const year: number = params.year
-        const month: number = params.month
+    async findAll(
+        @Param("year") year: number,
+        @Param("month") month: number,
+    ): Promise<Attendance[]> {
         return await this.repository.readAll(year, month)
     }
 }

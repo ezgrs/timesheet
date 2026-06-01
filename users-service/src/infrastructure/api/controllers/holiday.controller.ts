@@ -38,8 +38,7 @@ export class HolidayController {
     }
 
     @Delete(":id")
-    async delete(@Param() params: any) {
-        const id: string = params.id
+    async delete(@Param("id") id: string) {
         await this.repository.delete(id)
     }
 }
