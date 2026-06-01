@@ -3,23 +3,27 @@ import { HolidayRepository } from "@/application/ports/holiday.repository.js"
 import { Holiday } from "@/domain/entities/holiday.js"
 import { HolidayMapper } from "@/infrastructure/db/mappers/holiday.mapper.js"
 import { HolidayEntity } from "@/infrastructure/db/entities/holiday.entity.js"
-import { Between, DataSource } from "typeorm"
+import { Between, Repository } from "typeorm"
+import { InjectRepository } from "@nestjs/typeorm"
 
 @Injectable()
 export class TypeORMHolidayRepository implements HolidayRepository {
-    constructor(private readonly dataSource: DataSource) {}
+    constructor(
+        @InjectRepository(HolidayEntity)
+        private readonly repository: Repository<HolidayEntity>,
+    ) {}
 
     async create(data: Holiday): Promise<void> {
         const entity = HolidayMapper.toEntity(data)
-        await entity.save()
+        await this.repository.save(entity)
     }
 
     async delete(id: string): Promise<void> {
-        await this.dataSource.manager.delete(HolidayEntity, { id })
+        await this.repository.delete({ id })
     }
 
     async readAll(year: number, month: number): Promise<Holiday[]> {
-        const entities = await this.dataSource.manager.find(HolidayEntity, {
+        const entities = await this.repository.find({
             where: {
                 date: Between(
                     new Date(Date.UTC(year, month - 1, 1)),

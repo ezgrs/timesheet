@@ -1,10 +1,13 @@
-import { Controller, Get, Param } from "@nestjs/common"
+import { Controller, Get, Inject, Param } from "@nestjs/common"
 import { TypeORMAttendanceRepository } from "../services/typeorm-attendance.repository.js"
 import { Attendance } from "@/domain/entities/attendance.js"
 
 @Controller("attendances")
 export class AttendanceController {
-    constructor(private repository: TypeORMAttendanceRepository) {}
+    constructor(
+        @Inject(TypeORMAttendanceRepository)
+        private readonly repository: TypeORMAttendanceRepository,
+    ) {}
 
     @Get(":year/:month")
     async findAll(@Param() params: any): Promise<Attendance[]> {

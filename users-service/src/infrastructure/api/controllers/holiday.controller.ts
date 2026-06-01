@@ -1,11 +1,14 @@
-import { Controller, Post, Body, Delete, Param } from "@nestjs/common"
+import { Controller, Post, Body, Delete, Param, Inject } from "@nestjs/common"
 import { TypeORMHolidayRepository } from "../services/typeorm-holiday.repository.js"
 import { type CreateHolidayDTO } from "../dtos/create-holiday.dto.js"
 import { randomUUID } from "crypto"
 
 @Controller("holidays")
 export class HolidayController {
-    constructor(private repository: TypeORMHolidayRepository) {}
+    constructor(
+        @Inject(TypeORMHolidayRepository)
+        private readonly repository: TypeORMHolidayRepository,
+    ) {}
 
     @Post()
     async create(@Body() dto: CreateHolidayDTO) {
