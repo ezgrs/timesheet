@@ -4,7 +4,7 @@ import { AttendanceModule } from "./attendance.module"
 import { EmployeeModule } from "./employee.module"
 import { HolidayModule } from "./holiday.module"
 import { TypeOrmModule } from "@nestjs/typeorm"
-import "dotenv/config"
+import { databaseConfig } from "@/infrastructure/config/database.config"
 
 @Module({
     imports: [
@@ -12,16 +12,7 @@ import "dotenv/config"
         AttendanceModule,
         EmployeeModule,
         HolidayModule,
-        TypeOrmModule.forRoot({
-            type: "postgres",
-            host: process.env.DATABASE_HOST,
-            port: parseInt(process.env.DATABASE_PORT!),
-            username: process.env.DATABASE_USERNAME,
-            password: process.env.DATABASE_PASSWORD,
-            database: process.env.DATABASE_NAME,
-            entities: ["src/infrastructure/db/entities/*.entity.ts"],
-            migrations: ["src/infrastructure/db/migrations/*.ts"],
-        }),
+        TypeOrmModule.forRoot(databaseConfig),
     ],
 })
 export class AppModule {}
