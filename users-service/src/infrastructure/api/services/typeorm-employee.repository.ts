@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common"
-import { EmployeeRepository } from "../../../application/ports/employee.repository"
-import { Employee } from "../../../domain/entities/employee"
-import { EmployeeMapper } from "../../db/mappers/employee.mapper"
-import { EmployeeEntity } from "../../db/entities/employee.entity"
+import { EmployeeRepository } from "@/application/ports/employee.repository"
+import { Employee } from "@/domain/entities/employee"
+import { EmployeeMapper } from "@/infrastructure/db/mappers/employee.mapper"
+import { EmployeeEntity } from "@/infrastructure/db/entities/employee.entity"
 import { DataSource } from "typeorm"
 
 @Injectable()

@@ -1,5 +1,5 @@
-import { Absence } from "./absence"
-import { Employee } from "./employee"
+import { Absence } from "@/domain/entities/absence"
+import { Employee } from "@/domain/entities/employee"
 
 export type Attendance = {
     employee: Employee

@@ -1,4 +1,4 @@
-import { HolidayShift } from "../enums/holiday-shift"
+import { HolidayShift } from "@/domain/enums/holiday-shift"
 
 export type Holiday = {
     id: string

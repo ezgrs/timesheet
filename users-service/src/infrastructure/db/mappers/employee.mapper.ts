@@ -1,4 +1,4 @@
-import { Employee } from "../../../domain/entities/employee"
+import { Employee } from "@/domain/entities/employee"
 import { EmployeeEntity } from "../entities/employee.entity"
 
 export namespace EmployeeMapper {

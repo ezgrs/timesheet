@@ -1,4 +1,4 @@
-import { Absence } from "../../../domain/entities/absence"
+import { Absence } from "@/domain/entities/absence"
 import { AbsenceEntity } from "../entities/absence.entity"
 import { AbsenceReasonEntity } from "../entities/absence-reason.entity"
 

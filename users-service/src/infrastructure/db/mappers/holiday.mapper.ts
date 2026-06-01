@@ -1,4 +1,4 @@
-import { Holiday } from "../../../domain/entities/holiday"
+import { Holiday } from "@/domain/entities/holiday"
 import { HolidayEntity } from "../entities/holiday.entity"
 import { HolidayShiftEntity } from "../entities/holiday-shift.entity"
 

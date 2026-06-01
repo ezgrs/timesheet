@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common"
-import { AbsenceRepository } from "../../../application/ports/absence.repository"
-import { Absence } from "../../../domain/entities/absence"
-import { AbsenceMapper } from "../../db/mappers/absence.mapper"
-import { AbsenceEntity } from "../../db/entities/absence.entity"
+import { AbsenceRepository } from "@/application/ports/absence.repository"
+import { Absence } from "@/domain/entities/absence"
+import { AbsenceMapper } from "@/infrastructure/db/mappers/absence.mapper"
+import { AbsenceEntity } from "@/infrastructure/db/entities/absence.entity"
 import { DataSource } from "typeorm"
 
 @Injectable()

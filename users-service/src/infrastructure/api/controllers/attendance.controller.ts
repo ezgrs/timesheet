@@ -1,6 +1,6 @@
 import { Controller, Get, Param } from "@nestjs/common"
 import { TypeORMAttendanceRepository } from "../services/typeorm-attendance.repository"
-import { Attendance } from "../../../domain/entities/attendance"
+import { Attendance } from "@/domain/entities/attendance"
 
 @Controller("attendances")
 export class AttendanceController {
