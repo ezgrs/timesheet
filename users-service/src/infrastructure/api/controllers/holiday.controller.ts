@@ -1,7 +1,16 @@
-import { Controller, Post, Body, Delete, Param, Inject } from "@nestjs/common"
+import {
+    Controller,
+    Post,
+    Body,
+    Delete,
+    Param,
+    Inject,
+    Get,
+} from "@nestjs/common"
 import { TypeORMHolidayRepository } from "../services/typeorm-holiday.repository.js"
 import { type CreateHolidayDTO } from "../dtos/create-holiday.dto.js"
 import { randomUUID } from "crypto"
+import { Holiday } from "@/domain/entities/holiday.js"
 
 @Controller("holidays")
 export class HolidayController {
@@ -9,6 +18,14 @@ export class HolidayController {
         @Inject(TypeORMHolidayRepository)
         private readonly repository: TypeORMHolidayRepository,
     ) {}
+
+    @Get(":year/:month")
+    async readAll(
+        @Param("year") year: number,
+        @Param("month") month: number,
+    ): Promise<Holiday[]> {
+        return await this.repository.readAll(year, month)
+    }
 
     @Post()
     async create(@Body() dto: CreateHolidayDTO) {
