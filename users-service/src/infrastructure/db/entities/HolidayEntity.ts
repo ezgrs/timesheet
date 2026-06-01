@@ -3,8 +3,8 @@ import { HolidayShiftEntity } from "./HolidayShiftEntity"
 
 @Entity({name: "holidays"})
 export class HolidayEntity extends BaseEntity {
-    @PrimaryGeneratedColumn("increment", {name: "id", type: "int"})
-    id!: number
+    @PrimaryGeneratedColumn("uuid", {name: "id"})
+    id!: string
 
     @Column({name: "date", type: "date"})
     date!: string

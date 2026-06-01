@@ -4,8 +4,8 @@ import { AbsenceReasonEntity } from "./AbsenceReasonEntity"
 
 @Entity({name: "absences"})
 export class AbsenceEntity extends BaseEntity {
-    @PrimaryGeneratedColumn("increment", {name: "id", type: "int"})
-    id!: number
+    @PrimaryGeneratedColumn("uuid", {name: "id"})
+    id!: string
 
     @ManyToOne(() => EmployeeEntity, (employee) => employee.absences)
     @JoinColumn({ name: "employeeid" })

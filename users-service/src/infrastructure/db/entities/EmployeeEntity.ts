@@ -3,8 +3,8 @@ import { AbsenceEntity } from "./AbsenceEntity"
 
 @Entity({name: "employees"})
 export class EmployeeEntity extends BaseEntity {
-    @PrimaryGeneratedColumn("increment", {name: "id", type: "int"})
-    id!: number
+    @PrimaryGeneratedColumn("uuid", {name: "id"})
+    id!: string
 
     @Column({name: "name", type: "varchar", length: 255})
     name!: string

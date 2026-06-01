@@ -1,8 +1,8 @@
 import { AbsenceReason } from "../enums/AbsenceReason"
 
 export type Absence = {
-    id: number
-    employeeId: number
+    id: string
+    employeeId: string
     startDate: Date
     endDate: Date
     reason: AbsenceReason | null
