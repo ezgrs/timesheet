@@ -7,7 +7,7 @@ export class HolidayEntity extends BaseEntity {
     id!: string
 
     @Column({name: "date", type: "date"})
-    date!: string
+    date!: Date
 
     @Column({name: "name", type: "varchar", length: 255})
     name!: string
