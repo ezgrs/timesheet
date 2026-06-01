@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common"
-import { AbsenceController } from "../controllers/absence.controller"
-import { TypeORMAbsenceRepository } from "../services/typeorm-absence.repository"
+import { AbsenceController } from "../controllers/absence.controller.js"
+import { TypeORMAbsenceRepository } from "../services/typeorm-absence.repository.js"
 
 @Module({
     controllers: [AbsenceController],

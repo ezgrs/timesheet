@@ -1,5 +1,5 @@
-import { Absence } from "@/domain/entities/absence"
-import { AbsenceEntity } from "../entities/absence.entity"
+import { Absence } from "@/domain/entities/absence.js"
+import { AbsenceEntity } from "../entities/absence.entity.js"
 
 export namespace AbsenceMapper {
     export function toDomain(entity: AbsenceEntity): Absence {

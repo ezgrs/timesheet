@@ -1,10 +1,10 @@
 import { Module } from "@nestjs/common"
-import { AbsenceModule } from "./absence.module"
-import { AttendanceModule } from "./attendance.module"
-import { EmployeeModule } from "./employee.module"
-import { HolidayModule } from "./holiday.module"
+import { AbsenceModule } from "./absence.module.js"
+import { AttendanceModule } from "./attendance.module.js"
+import { EmployeeModule } from "./employee.module.js"
+import { HolidayModule } from "./holiday.module.js"
 import { TypeOrmModule } from "@nestjs/typeorm"
-import { databaseConfig } from "@/infrastructure/config/database.config"
+import { databaseConfig } from "@/infrastructure/config/database.config.js"
 
 @Module({
     imports: [

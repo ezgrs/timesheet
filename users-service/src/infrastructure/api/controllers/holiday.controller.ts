@@ -1,6 +1,6 @@
 import { Controller, Post, Body, Delete, Param } from "@nestjs/common"
-import { TypeORMHolidayRepository } from "../services/typeorm-holiday.repository"
-import { type CreateHolidayDTO } from "../dtos/create-holiday.dto"
+import { TypeORMHolidayRepository } from "../services/typeorm-holiday.repository.js"
+import { type CreateHolidayDTO } from "../dtos/create-holiday.dto.js"
 import { randomUUID } from "crypto"
 
 @Controller("holidays")

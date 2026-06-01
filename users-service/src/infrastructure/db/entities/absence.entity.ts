@@ -6,8 +6,8 @@ import {
     ManyToOne,
     PrimaryGeneratedColumn,
 } from "typeorm"
-import { EmployeeEntity } from "./employee.entity"
-import { AbsenceReason, absenceReasons } from "@/domain/enums/absence-reason"
+import { EmployeeEntity } from "./employee.entity.js"
+import { AbsenceReason, absenceReasons } from "@/domain/enums/absence-reason.js"
 
 @Entity({ name: "absences" })
 export class AbsenceEntity extends BaseEntity {

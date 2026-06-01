@@ -1,5 +1,5 @@
-import { Employee } from "@/domain/entities/employee"
-import { EmployeeEntity } from "../entities/employee.entity"
+import { Employee } from "@/domain/entities/employee.js"
+import { EmployeeEntity } from "../entities/employee.entity.js"
 
 export namespace EmployeeMapper {
     export function toDomain(entity: EmployeeEntity): Employee {

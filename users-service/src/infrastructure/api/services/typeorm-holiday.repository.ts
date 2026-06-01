@@ -1,8 +1,8 @@
 import { Injectable } from "@nestjs/common"
-import { HolidayRepository } from "@/application/ports/holiday.repository"
-import { Holiday } from "@/domain/entities/holiday"
-import { HolidayMapper } from "@/infrastructure/db/mappers/holiday.mapper"
-import { HolidayEntity } from "@/infrastructure/db/entities/holiday.entity"
+import { HolidayRepository } from "@/application/ports/holiday.repository.js"
+import { Holiday } from "@/domain/entities/holiday.js"
+import { HolidayMapper } from "@/infrastructure/db/mappers/holiday.mapper.js"
+import { HolidayEntity } from "@/infrastructure/db/entities/holiday.entity.js"
 import { Between, DataSource } from "typeorm"
 
 @Injectable()

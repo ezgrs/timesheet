@@ -1,5 +1,5 @@
-import { Holiday } from "@/domain/entities/holiday"
-import { HolidayEntity } from "../entities/holiday.entity"
+import { Holiday } from "@/domain/entities/holiday.js"
+import { HolidayEntity } from "../entities/holiday.entity.js"
 
 export namespace HolidayMapper {
     export function toDomain(entity: HolidayEntity): Holiday {

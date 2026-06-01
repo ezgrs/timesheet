@@ -1,4 +1,4 @@
-import { HolidayShift } from "@/domain/enums/holiday-shift"
+import { HolidayShift } from "@/domain/enums/holiday-shift.js"
 
 export type CreateHolidayDTO = {
     date: Date

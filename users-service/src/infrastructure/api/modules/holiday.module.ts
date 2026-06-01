@@ -1,6 +1,6 @@
 import { Module } from "@nestjs/common"
-import { HolidayController } from "../controllers/holiday.controller"
-import { TypeORMHolidayRepository } from "../services/typeorm-holiday.repository"
+import { HolidayController } from "../controllers/holiday.controller.js"
+import { TypeORMHolidayRepository } from "../services/typeorm-holiday.repository.js"
 
 @Module({
     controllers: [HolidayController],
