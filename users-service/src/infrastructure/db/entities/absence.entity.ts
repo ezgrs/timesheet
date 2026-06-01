@@ -18,7 +18,10 @@ export class AbsenceEntity extends BaseEntity {
     employeeId!: string
 
     @ManyToOne(() => EmployeeEntity, (employee) => employee.absences)
-    @JoinColumn({ name: "employeeid" })
+    @JoinColumn({
+        name: "employeeid",
+        foreignKeyConstraintName: "FK_absences_employeeid",
+    })
     employee!: EmployeeEntity
 
     @Column({ name: "startdate", type: "date" })
