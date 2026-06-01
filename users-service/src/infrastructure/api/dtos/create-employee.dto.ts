@@ -11,6 +11,6 @@ export class CreateEmployeeDTO {
     code!: string
 
     @IsString()
-    @Length(1, 255) 
+    @Length(1, 255)
     role!: string
 }

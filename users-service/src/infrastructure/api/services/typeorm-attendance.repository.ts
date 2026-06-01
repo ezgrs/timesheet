@@ -15,21 +15,17 @@ export class TypeORMAttendanceRepository implements AttendanceRepository {
     ) {}
 
     async readAll(year: number, month: number): Promise<Attendance[]> {
-        const employeeEntities = await this.repository.find(
-            {
-                relations: { absences: true },
-                where: {
-                    absences: {
-                        startDate: LessThan(
-                            new Date(Date.UTC(year, month + 1, 1)),
-                        ),
-                        endDate: MoreThanOrEqual(
-                            new Date(Date.UTC(year, month, 1)),
-                        ),
-                    },
+        const employeeEntities = await this.repository.find({
+            relations: { absences: true },
+            where: {
+                absences: {
+                    startDate: LessThan(new Date(Date.UTC(year, month + 1, 1))),
+                    endDate: MoreThanOrEqual(
+                        new Date(Date.UTC(year, month, 1)),
+                    ),
                 },
             },
-        )
+        })
         return employeeEntities.map((employeeEntity) => ({
             employee: EmployeeMapper.toDomain(employeeEntity),
             absences: employeeEntity.absences.map(AbsenceMapper.toDomain),

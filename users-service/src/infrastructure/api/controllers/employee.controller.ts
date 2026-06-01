@@ -7,7 +7,7 @@ import { randomUUID } from "crypto"
 export class EmployeeController {
     constructor(
         @Inject(TypeORMEmployeeRepository)
-        private readonly repository: TypeORMEmployeeRepository
+        private readonly repository: TypeORMEmployeeRepository,
     ) {}
 
     @Post()
