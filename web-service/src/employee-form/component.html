@@ -1,0 +1,36 @@
+<div class="rounded-xl bg-white p-4 shadow-sm">
+    <form
+        [formGroup]="form"
+        (ngSubmit)="submit()"
+        class="flex items-center gap-3"
+    >
+        <h3 class="text-lg">Add employee</h3>
+
+        <div class="flex-1"></div>
+
+        <input
+            formControlName="name"
+            placeholder="Name"
+            class="flex-1 rounded border p-2"
+        />
+
+        <input
+            formControlName="code"
+            placeholder="9999999-999"
+            class="w-44 rounded border p-2"
+        />
+
+        <input
+            formControlName="role"
+            placeholder="Role"
+            class="w-40 rounded border p-2"
+        />
+
+        <button
+            type="submit"
+            class="rounded bg-blue-600 px-4 py-2 text-white hover:bg-blue-700"
+        >
+            Add
+        </button>
+    </form>
+</div>

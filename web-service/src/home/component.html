@@ -1,0 +1,75 @@
+<div class="mx-auto max-w-7xl p-6 space-y-6">
+    <!-- Calendar -->
+    <section class="rounded-xl border bg-white p-6 shadow-sm">
+        <div class="mb-4 flex items-center justify-between">
+            <h2 class="text-xl font-semibold">Calendar</h2>
+
+            <div class="flex items-center gap-2">
+                <button class="rounded border px-3 py-1">Previous</button>
+
+                <span class="font-medium">
+                    {{ currentMonth }}
+                </span>
+
+                <button class="rounded border px-3 py-1">Next</button>
+            </div>
+        </div>
+
+        <div
+            class="flex h-80 items-center justify-center rounded-lg border-2 border-dashed"
+        >
+            Calendar Component Placeholder
+        </div>
+    </section>
+
+    <!-- Employees -->
+    <section class="rounded-xl border bg-white p-6 shadow-sm">
+        <h2 class="mb-4 text-xl font-semibold">Employees</h2>
+
+        <div class="mb-4">
+            <app-employee-form (add)="addEmployee($event)" />
+        </div>
+
+        @if (employees().length === 0) {
+            <div class="mt-5 flex items-center justify-center">
+                <p>No employees added.</p>
+            </div>
+        } @else {
+            <div class="flex flex-col">
+                @for (employee of employees(); track employee.code) {
+                    <app-employee-card
+                        class="mb-1"
+                        [employee]="employee"
+                        (remove)="removeEmployee(employee.code)"
+                    />
+                }
+            </div>
+        }
+    </section>
+
+    <!-- Holidays -->
+    <section class="rounded-xl border bg-white p-6 shadow-sm">
+        <h2 class="mb-4 text-xl font-semibold">Holidays</h2>
+
+        <div
+            class="mb-6 flex h-48 items-center justify-center rounded-lg border-2 border-dashed"
+        >
+            Holiday List Placeholder
+        </div>
+
+        <div
+            class="flex h-32 items-center justify-center rounded-lg border-2 border-dashed"
+        >
+            Add Custom Holiday Placeholder
+        </div>
+    </section>
+
+    <!-- PDF -->
+    <section class="flex justify-end">
+        <button
+            class="rounded-lg bg-blue-600 px-6 py-3 font-medium text-white hover:bg-blue-700"
+        >
+            Generate PDF
+        </button>
+    </section>
+</div>
