@@ -24,9 +24,9 @@
 
     <!-- Employees -->
     <section class="rounded-xl border bg-white p-6 shadow-sm">
-        <h2 class="mb-4 text-xl font-semibold">Employees</h2>
-
-        <div class="mb-4">
+        <div class="flex mb-4">
+            <h2 class="text-xl font-semibold">Employees</h2>
+            <div class="flex-1"></div>
             <app-employee-form (add)="addEmployee($event)" />
         </div>
 
