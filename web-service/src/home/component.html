@@ -22,47 +22,46 @@
         </div>
     </section>
 
-    <!-- Employees -->
-    <section class="rounded-xl border bg-white p-6 shadow-sm">
-        <div class="flex mb-4">
-            <h2 class="text-xl font-semibold">Employees</h2>
-            <div class="flex-1"></div>
+    <div class="flex flex-col md:flex-row gap-4">
+        <!-- Employees -->
+        <section class="w-full md:flex-1 min-w-0 rounded-xl border bg-white p-6 shadow-sm">
+            <h2 class="mb-4 text-xl font-semibold">Employees</h2>
             <app-employee-form (add)="addEmployee($event)" />
-        </div>
 
-        @if (employees().length === 0) {
-            <div class="mt-5 flex items-center justify-center">
-                <p>No employees added.</p>
+            @if (employees().length === 0) {
+                <div class="mt-5 flex items-center justify-center">
+                    <p>No employees added.</p>
+                </div>
+            } @else {
+                <div class="flex flex-col">
+                    @for (employee of employees(); track employee.code) {
+                        <app-employee-card
+                            class="mb-1"
+                            [employee]="employee"
+                            (remove)="removeEmployee(employee.code)"
+                        />
+                    }
+                </div>
+            }
+        </section>
+
+        <!-- Holidays -->
+        <section class="w-full md:flex-1 min-w-0 rounded-xl border bg-white p-6 shadow-sm">
+            <h2 class="mb-4 text-xl font-semibold">Holidays</h2>
+
+            <div
+                class="mb-6 flex h-48 items-center justify-center rounded-lg border-2 border-dashed"
+            >
+                Holiday List Placeholder
             </div>
-        } @else {
-            <div class="flex flex-col">
-                @for (employee of employees(); track employee.code) {
-                    <app-employee-card
-                        class="mb-1"
-                        [employee]="employee"
-                        (remove)="removeEmployee(employee.code)"
-                    />
-                }
+
+            <div
+                class="flex h-32 items-center justify-center rounded-lg border-2 border-dashed"
+            >
+                Add Custom Holiday Placeholder
             </div>
-        }
-    </section>
-
-    <!-- Holidays -->
-    <section class="rounded-xl border bg-white p-6 shadow-sm">
-        <h2 class="mb-4 text-xl font-semibold">Holidays</h2>
-
-        <div
-            class="mb-6 flex h-48 items-center justify-center rounded-lg border-2 border-dashed"
-        >
-            Holiday List Placeholder
-        </div>
-
-        <div
-            class="flex h-32 items-center justify-center rounded-lg border-2 border-dashed"
-        >
-            Add Custom Holiday Placeholder
-        </div>
-    </section>
+        </section>
+    </div>
 
     <!-- PDF -->
     <section class="flex justify-end">
