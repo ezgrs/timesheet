@@ -1,24 +1,37 @@
 <div class="mx-auto max-w-7xl p-6 space-y-6">
     <!-- Calendar -->
     <section class="rounded-xl border bg-white p-6 shadow-sm">
-        <div class="mb-4 flex items-center justify-between">
-            <h2 class="text-xl font-semibold">Calendar</h2>
-
-            <div class="flex items-center gap-2">
-                <button class="rounded border px-3 py-1">Previous</button>
-
-                <span class="font-medium">
-                    {{ currentMonth }}
-                </span>
-
-                <button class="rounded border px-3 py-1">Next</button>
-            </div>
-        </div>
-
-        <div
-            class="flex h-80 items-center justify-center rounded-lg border-2 border-dashed"
-        >
-            Calendar Component Placeholder
+        <h2 class="text-xl font-semibold">Calendar</h2>
+        <div class="flex flex-row gap-10">
+            <mat-calendar class="flex-1"/>
+            <!-- Holidays -->
+            <section class="w-full md:flex-1 min-w-0">
+                <h2 class="mb-4 text-lg font-semibold">Holidays</h2>
+                <div
+                    class="mb-6 flex h-48 items-center justify-center rounded-lg border-2 border-dashed"
+                >
+                    Holiday List Placeholder
+                </div>
+                <div
+                    class="flex h-32 items-center justify-center rounded-lg border-2 border-dashed"
+                >
+                    Add Custom Holiday Placeholder
+                </div>
+            </section>
+            <!-- Absences -->
+            <section class="w-full md:flex-1 min-w-0">
+                <h2 class="mb-4 text-lg font-semibold">Absences</h2>
+                <div
+                    class="mb-6 flex h-48 items-center justify-center rounded-lg border-2 border-dashed"
+                >
+                    Holiday List Placeholder
+                </div>
+                <div
+                    class="flex h-32 items-center justify-center rounded-lg border-2 border-dashed"
+                >
+                    Add Custom Holiday Placeholder
+                </div>
+            </section>
         </div>
     </section>
 
@@ -43,23 +56,6 @@
                     }
                 </div>
             }
-        </section>
-
-        <!-- Holidays -->
-        <section class="w-full md:flex-1 min-w-0 rounded-xl border bg-white p-6 shadow-sm">
-            <h2 class="mb-4 text-xl font-semibold">Holidays</h2>
-
-            <div
-                class="mb-6 flex h-48 items-center justify-center rounded-lg border-2 border-dashed"
-            >
-                Holiday List Placeholder
-            </div>
-
-            <div
-                class="flex h-32 items-center justify-center rounded-lg border-2 border-dashed"
-            >
-                Add Custom Holiday Placeholder
-            </div>
         </section>
     </div>
 
