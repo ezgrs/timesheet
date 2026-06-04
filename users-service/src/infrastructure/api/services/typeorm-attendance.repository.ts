@@ -23,9 +23,9 @@ export class TypeORMAttendanceRepository implements AttendanceRepository {
             this.employeesRepository.find(),
             this.absencesRepository.find({
                 where: {
-                    startDate: LessThan(new Date(Date.UTC(year, month + 1, 1))),
+                    startDate: LessThan(new Date(Date.UTC(year, month, 1))),
                     endDate: MoreThanOrEqual(
-                        new Date(Date.UTC(year, month, 1)),
+                        new Date(Date.UTC(year, month - 1, 1)),
                     ),
                 },
             }),
