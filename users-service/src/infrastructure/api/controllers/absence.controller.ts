@@ -1,6 +1,6 @@
 import { Controller, Post, Body, Delete, Param, Inject } from "@nestjs/common"
 import { TypeORMAbsenceRepository } from "../services/typeorm-absence.repository.js"
-import { type CreateAbsenceDTO } from "../dtos/create-absence.dto.js"
+import { CreateAbsenceDTO } from "../dtos/create-absence.dto.js"
 import { randomUUID } from "crypto"
 
 @Controller("absences")
