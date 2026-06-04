@@ -8,11 +8,11 @@ import { databaseConfig } from "@/infrastructure/config/database.config.js"
 
 @Module({
     imports: [
+        TypeOrmModule.forRoot(databaseConfig),
         AbsenceModule,
         AttendanceModule,
         EmployeeModule,
         HolidayModule,
-        TypeOrmModule.forRoot(databaseConfig),
     ],
 })
 export class AppModule {}
