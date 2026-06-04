@@ -4,17 +4,18 @@
         <h2 class="mb-4 text-xl font-semibold">Employees</h2>
         <app-employee-form (add)="addEmployee($event)" />
 
-        @if (employees().length === 0) {
+        @let attendances = (attendances$ | async) ?? [];
+        @if (attendances.length === 0) {
             <div class="mt-5 flex items-center justify-center">
                 <p>No employees added.</p>
             </div>
         } @else {
             <div class="mt-4 flex flex-col">
-                @for (employee of employees(); track employee.code) {
+                @for (attendance of attendances; track attendance.employee.id) {
                     <app-employee-card
                         class="mb-1"
-                        [employee]="employee"
-                        (remove)="removeEmployee(employee.code)"
+                        [employee]="attendance.employee"
+                        (remove)="removeEmployee(attendance.employee.id)"
                     />
                 }
             </div>

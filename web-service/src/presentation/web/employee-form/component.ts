@@ -37,7 +37,7 @@ export class EmployeeFormComponent {
     submit() {
         if (this.form.invalid) return
 
-        this.add.emit(this.form.getRawValue())
+        this.add.emit({...this.form.getRawValue(), id: crypto.randomUUID()})
         this.form.reset()
     }
 }
