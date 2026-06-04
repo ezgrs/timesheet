@@ -8,7 +8,7 @@ import {
     Get,
 } from "@nestjs/common"
 import { TypeORMHolidayRepository } from "../services/typeorm-holiday.repository.js"
-import { type CreateHolidayDTO } from "../dtos/create-holiday.dto.js"
+import { CreateHolidayDTO } from "../dtos/create-holiday.dto.js"
 import { randomUUID } from "crypto"
 import { Holiday } from "@/domain/entities/holiday.js"
 
