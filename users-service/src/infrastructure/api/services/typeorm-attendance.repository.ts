@@ -6,29 +6,40 @@ import { EmployeeEntity } from "@/infrastructure/db/entities/employee.entity.js"
 import { EmployeeMapper } from "@/infrastructure/db/mappers/employee.mapper.js"
 import { AbsenceMapper } from "@/infrastructure/db/mappers/absence.mapper.js"
 import { InjectRepository } from "@nestjs/typeorm"
+import { AbsenceEntity } from "@/infrastructure/db/entities/absence.entity.js"
+import { Absence } from "@/domain/entities/absence.js"
 
 @Injectable()
 export class TypeORMAttendanceRepository implements AttendanceRepository {
     constructor(
         @InjectRepository(EmployeeEntity)
-        private readonly repository: Repository<EmployeeEntity>,
+        private readonly employeesRepository: Repository<EmployeeEntity>,
+        @InjectRepository(AbsenceEntity)
+        private readonly absencesRepository: Repository<AbsenceEntity>,
     ) {}
 
     async readAll(year: number, month: number): Promise<Attendance[]> {
-        const employeeEntities = await this.repository.find({
-            relations: { absences: true },
-            where: {
-                absences: {
+        const [employeesEntities, absencesEntities] = await Promise.all([
+            this.employeesRepository.find(),
+            this.absencesRepository.find({
+                where: {
                     startDate: LessThan(new Date(Date.UTC(year, month + 1, 1))),
                     endDate: MoreThanOrEqual(
                         new Date(Date.UTC(year, month, 1)),
                     ),
                 },
-            },
-        })
-        return employeeEntities.map((employeeEntity) => ({
+            }),
+        ])
+        const groups = new Map<string, Absence[]>()
+        for (const absenceEntity of absencesEntities) {
+            const employeeId = absenceEntity.employeeId
+            const absences = groups.get(employeeId) ?? []
+            absences.push(AbsenceMapper.toDomain(absenceEntity))
+            groups.set(employeeId, absences)
+        }
+        return employeesEntities.map(employeeEntity => ({
             employee: EmployeeMapper.toDomain(employeeEntity),
-            absences: employeeEntity.absences.map(AbsenceMapper.toDomain),
+            absences: groups.get(employeeEntity.id) ?? [],
         }))
     }
 }
