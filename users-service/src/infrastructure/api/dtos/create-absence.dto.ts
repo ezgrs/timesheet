@@ -1,6 +1,5 @@
 import { AbsenceReason, absenceReasons } from "@/domain/enums/absence-reason.js"
 import {
-    IsDateString,
     IsEnum,
     IsISO8601,
     IsOptional,
