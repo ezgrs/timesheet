@@ -11,14 +11,16 @@ export class AbsenceController {
     ) {}
 
     @Post()
-    async create(@Body() dto: CreateAbsenceDTO) {
+    async create(@Body() dto: CreateAbsenceDTO): Promise<string> {
+        const id = randomUUID()
         await this.repository.create({
-            id: randomUUID(),
+            id: id,
             employeeId: dto.employeeId,
             startDate: dto.startDate,
             endDate: dto.endDate,
             reason: dto.reason ?? null,
         })
+        return id
     }
 
     @Delete(":id")
