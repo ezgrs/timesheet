@@ -1,8 +1,8 @@
 import { HolidayShift, holidayShifts } from "@/domain/enums/holiday-shift.js"
-import { BaseEntity, Column, Entity, PrimaryGeneratedColumn } from "typeorm"
+import { Column, Entity, PrimaryGeneratedColumn } from "typeorm"
 
 @Entity({ name: "holidays" })
-export class HolidayEntity extends BaseEntity {
+export class HolidayEntity {
     @PrimaryGeneratedColumn("uuid", { name: "id" })
     id!: string
 

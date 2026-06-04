@@ -1,5 +1,4 @@
 import {
-    BaseEntity,
     Column,
     Entity,
     JoinColumn,
@@ -10,7 +9,7 @@ import { EmployeeEntity } from "./employee.entity.js"
 import { AbsenceReason, absenceReasons } from "@/domain/enums/absence-reason.js"
 
 @Entity({ name: "absences" })
-export class AbsenceEntity extends BaseEntity {
+export class AbsenceEntity {
     @PrimaryGeneratedColumn("uuid", { name: "id" })
     id!: string
 

@@ -1,5 +1,4 @@
 import {
-    BaseEntity,
     Column,
     Entity,
     OneToMany,
@@ -8,7 +7,7 @@ import {
 import { AbsenceEntity } from "./absence.entity.js"
 
 @Entity({ name: "employees" })
-export class EmployeeEntity extends BaseEntity {
+export class EmployeeEntity {
     @PrimaryGeneratedColumn("uuid", { name: "id" })
     id!: string
 
