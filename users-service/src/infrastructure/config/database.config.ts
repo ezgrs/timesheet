@@ -1,6 +1,9 @@
 import { TypeOrmModuleOptions } from "@nestjs/typeorm"
 import "dotenv/config"
 
+const dirName = process.env.NODE_ENV === "production" ? "dist" : "src"
+const fileExtension = process.env.NODE_ENV === "production" ? "js" : "ts"
+
 export const databaseConfig: TypeOrmModuleOptions = {
     type: "postgres",
     host: process.env.DATABASE_HOST,
@@ -8,6 +11,7 @@ export const databaseConfig: TypeOrmModuleOptions = {
     username: process.env.DATABASE_USERNAME,
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_NAME,
-    entities: ["src/infrastructure/db/entities/*.entity.ts"],
-    migrations: ["src/infrastructure/db/migrations/*.ts"],
+    entities: [`${dirName}/infrastructure/db/entities/*.entity.${fileExtension}`],
+    migrations: [`${dirName}/infrastructure/db/migrations/*.${fileExtension}`],
+    retryAttempts: 0,
 } as const
