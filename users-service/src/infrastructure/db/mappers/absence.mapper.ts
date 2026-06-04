@@ -5,7 +5,7 @@ export namespace AbsenceMapper {
     export function toDomain(entity: AbsenceEntity): Absence {
         return {
             id: entity.id,
-            employeeId: entity.employee.id,
+            employeeId: entity.employeeId,
             startDate: entity.startDate,
             endDate: entity.endDate,
             reason: entity.reason,
