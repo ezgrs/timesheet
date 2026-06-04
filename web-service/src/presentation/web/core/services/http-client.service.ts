@@ -1,8 +1,8 @@
-import { Injectable } from "@angular/core";
-import { HTTPClient } from "../../../../application/ports/http-client";
-import { FetchHTTPClient } from "../../../../infrastructure/ports/fetch.http-client";
+import { Injectable } from "@angular/core"
+import { HTTPClient } from "../../../../application/ports/http-client"
+import { FetchHTTPClient } from "../../../../infrastructure/ports/fetch.http-client"
 
-@Injectable({providedIn: 'root'})
+@Injectable({ providedIn: "root" })
 export class HTTPClientService implements HTTPClient {
     private readonly client: HTTPClient = new FetchHTTPClient()
 

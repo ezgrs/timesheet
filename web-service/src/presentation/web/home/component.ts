@@ -12,7 +12,12 @@ import { AsyncPipe } from "@angular/common"
 @Component({
     selector: "app-home",
     providers: [provideNativeDateAdapter()],
-    imports: [EmployeeFormComponent, EmployeeCardComponent, MatDatepickerModule, AsyncPipe],
+    imports: [
+        EmployeeFormComponent,
+        EmployeeCardComponent,
+        MatDatepickerModule,
+        AsyncPipe,
+    ],
     templateUrl: "./component.html",
 })
 export class HomeComponent {
@@ -21,7 +26,10 @@ export class HomeComponent {
 
     constructor(private readonly dataRepository: DataRepositoryService) {
         const now = new Date()
-        this.attendances$ = this.dataRepository.readAttendances(now.getFullYear(), now.getMonth() + 1);
+        this.attendances$ = this.dataRepository.readAttendances(
+            now.getFullYear(),
+            now.getMonth() + 1,
+        )
     }
 
     addEmployee(employee: Employee) {}

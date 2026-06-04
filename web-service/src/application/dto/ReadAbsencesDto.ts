@@ -8,13 +8,15 @@ export const ReadAbsencesDTOSchema = z.object({
         code: z.string(),
         role: z.string(),
     }),
-    absences: z.array(z.object({
-        id: z.uuid(),
-        employeeId: z.uuid(),
-        startDate: z.iso.date(),
-        endDate: z.iso.date(),
-        reason: z.enum(absenceReasons).optional(),
-    })),
+    absences: z.array(
+        z.object({
+            id: z.uuid(),
+            employeeId: z.uuid(),
+            startDate: z.iso.date(),
+            endDate: z.iso.date(),
+            reason: z.enum(absenceReasons).optional(),
+        }),
+    ),
 })
 
 export type ReadAbsencesDTO = z.infer<typeof ReadAbsencesDTOSchema>

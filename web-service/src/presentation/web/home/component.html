@@ -1,6 +1,8 @@
 <div class="mx-auto max-w-7xl p-6 space-y-6">
     <!-- Employees -->
-    <section class="w-full md:flex-1 min-w-0 rounded-xl border bg-white p-6 shadow-sm">
+    <section
+        class="w-full md:flex-1 min-w-0 rounded-xl border bg-white p-6 shadow-sm"
+    >
         <h2 class="mb-4 text-xl font-semibold">Employees</h2>
         <app-employee-form (add)="addEmployee($event)" />
 
@@ -26,7 +28,7 @@
     <section class="rounded-xl border bg-white p-6 shadow-sm">
         <h2 class="text-xl font-semibold">Calendar</h2>
         <div class="flex flex-row gap-10">
-            <mat-calendar class="flex-1"/>
+            <mat-calendar class="flex-1" />
             <!-- Holidays -->
             <section class="w-full md:flex-1 min-w-0">
                 <h2 class="mb-4 text-lg font-semibold">Holidays</h2>

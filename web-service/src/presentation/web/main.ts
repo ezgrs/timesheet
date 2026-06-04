@@ -12,8 +12,8 @@ bootstrapApplication(App, {
     providers: [
         provideBrowserGlobalErrorListeners(),
         provideRouter(routes),
-        {provide: APP_CONFIG, useValue: appConfig},
-        {provide: HTTP_CLIENT, useClass: HTTPClientService},
+        { provide: APP_CONFIG, useValue: appConfig },
+        { provide: HTTP_CLIENT, useClass: HTTPClientService },
         DataRepositoryService,
     ],
 }).catch((err) => console.error(err))
