@@ -12,12 +12,14 @@ export class EmployeeController {
 
     @Post()
     async create(@Body() dto: CreateEmployeeDTO) {
+        const id = randomUUID()
         await this.repository.create({
-            id: randomUUID(),
+            id: id,
             name: dto.name,
             code: dto.code,
             role: dto.role,
         })
+        return id
     }
 
     @Delete(":id")
