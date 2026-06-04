@@ -17,9 +17,9 @@
       "@/*": ["./src/*"]
     },
     "outDir": "./dist",
-    "rootDir": "./",
-    "incremental": true,
+    "rootDir": "./src",
     "skipLibCheck": true,
+    "useDefineForClassFields": true,
     "strictNullChecks": true,
     "forceConsistentCasingInFileNames": true,
     "noImplicitAny": true,
