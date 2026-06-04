@@ -1,5 +1,5 @@
 import { Component, EventEmitter, Input, Output } from "@angular/core"
-import { Employee } from "../domain/entities/employee"
+import { Employee } from "../../../domain/entities/employee"
 
 @Component({
     selector: "app-employee-card",

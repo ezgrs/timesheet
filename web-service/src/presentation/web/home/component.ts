@@ -1,9 +1,9 @@
 import { Component, signal } from "@angular/core"
 import { EmployeeFormComponent } from "../employee-form/component"
-import { Employee } from "../domain/entities/employee"
 import { EmployeeCardComponent } from "../employee-card/component"
 import { MatDatepickerModule } from "@angular/material/datepicker"
 import { provideNativeDateAdapter } from "@angular/material/core"
+import { Employee } from "../../../domain/entities/employee"
 
 @Component({
     selector: "app-home",

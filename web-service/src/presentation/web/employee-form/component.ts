@@ -5,7 +5,7 @@ import {
     ReactiveFormsModule,
     Validators,
 } from "@angular/forms"
-import { Employee } from "../domain/entities/employee"
+import { Employee } from "../../../domain/entities/employee"
 
 @Component({
     selector: "app-employee-form",
