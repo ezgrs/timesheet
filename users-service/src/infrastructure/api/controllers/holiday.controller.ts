@@ -29,12 +29,14 @@ export class HolidayController {
 
     @Post()
     async create(@Body() dto: CreateHolidayDTO) {
+        const id = randomUUID()
         await this.repository.create({
-            id: randomUUID(),
+            id: id,
             name: dto.name,
             date: dto.date,
             shift: dto.shift ?? null,
         })
+        return id
     }
 
     @Delete(":id")
