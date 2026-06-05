@@ -16,7 +16,7 @@ export class AbsenceEntity {
     @Column({ name: "employeeid", type: "uuid" })
     employeeId!: string
 
-    @ManyToOne(() => EmployeeEntity, (employee) => employee.absences)
+    @ManyToOne(() => EmployeeEntity, (employee) => employee.absences, {onDelete: "CASCADE"})
     @JoinColumn({
         name: "employeeid",
         foreignKeyConstraintName: "FK_absences_employeeid",
