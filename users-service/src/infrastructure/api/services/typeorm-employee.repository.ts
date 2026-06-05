@@ -18,6 +18,11 @@ export class TypeORMEmployeeRepository implements EmployeeRepository {
         await this.repository.save(entity)
     }
 
+    async readAll(): Promise<Employee[]> {
+        const entities = await this.repository.find()
+        return entities.map(EmployeeMapper.toDomain)
+    }
+
     async delete(id: string): Promise<void> {
         await this.repository.delete({ id })
     }
