@@ -9,11 +9,11 @@ if (!name) {
 
 execSync(
   `node ` + 
-  `-r ts-node/register ` + 
-  `-r tsconfig-paths/register ` + 
+  `--experimental-specifier-resolution=node ` + 
+  `--loader ./scripts/loader.mjs ` + 
   `./node_modules/typeorm/cli.js ` + 
-  `-d ./src/infrastructure/db/data-source.ts ` + 
   `migration:generate ` + 
-  `./src/infrastructure/db/migrations/${name}`,
+  `./src/infrastructure/db/migrations/${name} ` + 
+  `-d ./src/infrastructure/db/data-source.ts`,
   { stdio: 'inherit' }
 );
