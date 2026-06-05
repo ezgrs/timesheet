@@ -4,6 +4,7 @@ import {
     JoinColumn,
     ManyToOne,
     PrimaryGeneratedColumn,
+    type Relation,
 } from "typeorm"
 import { EmployeeEntity } from "./employee.entity.js"
 import { AbsenceReason, absenceReasons } from "@/domain/enums/absence-reason.js"
@@ -21,7 +22,7 @@ export class AbsenceEntity {
         name: "employeeid",
         foreignKeyConstraintName: "FK_absences_employeeid",
     })
-    employee!: EmployeeEntity
+    employee!: Relation<EmployeeEntity>
 
     @Column({ name: "startdate", type: "date" })
     startDate!: Date
