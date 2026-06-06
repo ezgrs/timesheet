@@ -2,7 +2,6 @@ import { Inject, Injectable } from "@angular/core"
 import { HTTPClient } from "../../../../application/ports/http-client"
 import { APP_CONFIG, HTTP_CLIENT } from "../../config/tokens"
 import { DataRepositoryUseCase } from "../../../../application/use-cases/data-repository"
-import { from, Observable } from "rxjs"
 import { Attendance } from "../../../../domain/entities/attendance"
 import { AppConfig } from "../../config/config"
 import { Employee } from "../../../../domain/entities/employee"
@@ -21,8 +20,8 @@ export class DataRepositoryService {
         )
     }
 
-    readAttendances(year: number, month: number): Observable<Attendance[]> {
-        return from(this.repository.readAttendances(year, month))
+    readAttendances(year: number, month: number): Promise<Attendance[]> {
+        return this.repository.readAttendances(year, month)
     }
 
     async addEmployee(employee: Employee) {

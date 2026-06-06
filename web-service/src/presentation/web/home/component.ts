@@ -1,4 +1,10 @@
-import { AfterViewInit, Component, ViewChild } from "@angular/core"
+import {
+    AfterViewInit,
+    Component,
+    signal,
+    ViewChild,
+    WritableSignal,
+} from "@angular/core"
 import { EmployeeFormComponent } from "../employee-form/component"
 import { EmployeeCardComponent } from "../employee-card/component"
 import { MatCalendar, MatDatepickerModule } from "@angular/material/datepicker"
@@ -7,8 +13,11 @@ import { Employee } from "../../../domain/entities/employee"
 import { BehaviorSubject, Observable, startWith } from "rxjs"
 import { Attendance } from "../../../domain/entities/attendance"
 import { DataRepositoryService } from "../core/services/data-repository.service"
-import { AsyncPipe } from "@angular/common"
 import { ToastService } from "../core/services/toast.service"
+import { Snapshot } from "../core/snapshot"
+import { isConnectionError } from "../core/errors"
+import { MatButtonModule } from "@angular/material/button"
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner"
 
 type MonthOfTheYear = { year: number; month: number }
 
@@ -19,7 +28,8 @@ type MonthOfTheYear = { year: number; month: number }
         EmployeeFormComponent,
         EmployeeCardComponent,
         MatDatepickerModule,
-        AsyncPipe,
+        MatButtonModule,
+        MatProgressSpinnerModule,
     ],
     templateUrl: "./component.html",
 })
@@ -29,31 +39,20 @@ export class HomeComponent implements AfterViewInit {
 
     private currentMonthSubject: BehaviorSubject<MonthOfTheYear>
     currentMonth$: Observable<MonthOfTheYear>
-    attendances$: Observable<Attendance[]>
+    readonly attendances$: WritableSignal<Snapshot<Attendance[]>> = signal({
+        type: "waiting",
+    })
 
-    private getAttendances$(
-        initialMonth: MonthOfTheYear,
-        subscribe: boolean,
-    ): Observable<Attendance[]> {
-        const observable = this.dataRepository.readAttendances(
-            initialMonth.year,
-            initialMonth.month,
-        )
-        if (subscribe) {
-            observable.subscribe({
-                error: (e) => {
-                    if (
-                        e instanceof TypeError &&
-                        e.message === "Failed to fetch"
-                    ) {
-                        this.toast.error(
-                            "A connection error has ocurred while retrieving the employees.",
-                        )
-                    }
-                },
+    private pushAttendances(initialMonth: MonthOfTheYear): void {
+        this.attendances$.set({ type: "waiting" })
+        this.dataRepository
+            .readAttendances(initialMonth.year, initialMonth.month)
+            .then((attendances) => {
+                this.attendances$.set({ type: "done", value: attendances })
             })
-        }
-        return observable
+            .catch((e) => {
+                this.attendances$.set({ type: "error", value: e })
+            })
     }
 
     constructor(
@@ -70,12 +69,11 @@ export class HomeComponent implements AfterViewInit {
             initialMonth,
         )
         this.currentMonth$ = this.currentMonthSubject.asObservable()
-        this.attendances$ = this.getAttendances$(initialMonth, false)
-
-        this.currentMonthSubject.subscribe((month) => {
-            this.attendances$ = this.getAttendances$(month, true)
-        })
+        this.pushAttendances(initialMonth)
+        this.currentMonthSubject.subscribe(this.pushAttendances)
     }
+
+    readonly isConnectionError = isConnectionError
 
     ngAfterViewInit(): void {
         this.calendar.stateChanges.pipe(startWith(null)).subscribe(() => {
@@ -94,6 +92,10 @@ export class HomeComponent implements AfterViewInit {
         })
     }
 
+    retry() {
+        this.pushAttendances(this.currentMonthSubject.value)
+    }
+
     async addEmployee(employee: Employee) {
         try {
             await this.dataRepository.addEmployee(employee)
@@ -107,7 +109,7 @@ export class HomeComponent implements AfterViewInit {
             }
             return
         }
-        this.currentMonthSubject.next(this.currentMonthSubject.value)
+        this.pushAttendances(this.currentMonthSubject.value)
     }
 
     async removeEmployee(id: string) {
@@ -123,6 +125,6 @@ export class HomeComponent implements AfterViewInit {
             }
             return
         }
-        this.currentMonthSubject.next(this.currentMonthSubject.value)
+        this.pushAttendances(this.currentMonthSubject.value)
     }
 }
