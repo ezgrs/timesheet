@@ -38,7 +38,6 @@ export class HomeComponent implements AfterViewInit {
     calendar!: MatCalendar<Date>
 
     private currentMonthSubject: BehaviorSubject<MonthOfTheYear>
-    currentMonth$: Observable<MonthOfTheYear>
     readonly attendances$: WritableSignal<Snapshot<Attendance[]>> = signal({
         type: "waiting",
     })
@@ -68,7 +67,6 @@ export class HomeComponent implements AfterViewInit {
         this.currentMonthSubject = new BehaviorSubject<MonthOfTheYear>(
             initialMonth,
         )
-        this.currentMonth$ = this.currentMonthSubject.asObservable()
         this.pushAttendances(initialMonth)
         this.currentMonthSubject.subscribe(this.pushAttendances)
     }
