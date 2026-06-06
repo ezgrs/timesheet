@@ -8,6 +8,7 @@ import { BehaviorSubject, Observable, startWith } from "rxjs"
 import { Attendance } from "../../../domain/entities/attendance"
 import { DataRepositoryService } from "../core/services/data-repository.service"
 import { AsyncPipe } from "@angular/common"
+import { ToastService } from "../core/services/toast.service"
 
 type MonthOfTheYear = { year: number; month: number }
 
@@ -30,7 +31,35 @@ export class HomeComponent implements AfterViewInit {
     currentMonth$: Observable<MonthOfTheYear>
     attendances$: Observable<Attendance[]>
 
-    constructor(private readonly dataRepository: DataRepositoryService) {
+    private getAttendances$(
+        initialMonth: MonthOfTheYear,
+        subscribe: boolean,
+    ): Observable<Attendance[]> {
+        const observable = this.dataRepository.readAttendances(
+            initialMonth.year,
+            initialMonth.month,
+        )
+        if (subscribe) {
+            observable.subscribe({
+                error: (e) => {
+                    if (
+                        e instanceof TypeError &&
+                        e.message === "Failed to fetch"
+                    ) {
+                        this.toast.error(
+                            "A connection error has ocurred while retrieving the employees.",
+                        )
+                    }
+                },
+            })
+        }
+        return observable
+    }
+
+    constructor(
+        private readonly dataRepository: DataRepositoryService,
+        private readonly toast: ToastService,
+    ) {
         const now = new Date()
 
         const initialMonth: MonthOfTheYear = {
@@ -41,16 +70,10 @@ export class HomeComponent implements AfterViewInit {
             initialMonth,
         )
         this.currentMonth$ = this.currentMonthSubject.asObservable()
-        this.attendances$ = this.dataRepository.readAttendances(
-            initialMonth.year,
-            initialMonth.month,
-        )
+        this.attendances$ = this.getAttendances$(initialMonth, false)
 
         this.currentMonthSubject.subscribe((month) => {
-            this.attendances$ = this.dataRepository.readAttendances(
-                month.year,
-                month.month,
-            )
+            this.attendances$ = this.getAttendances$(month, true)
         })
     }
 
@@ -75,7 +98,13 @@ export class HomeComponent implements AfterViewInit {
         try {
             await this.dataRepository.addEmployee(employee)
         } catch (e) {
-            console.error(e)
+            if (e instanceof TypeError && e.message === "Failed to fetch") {
+                this.toast.error(
+                    "A connection error has ocurred while adding an employee.",
+                )
+            } else {
+                this.toast.error("An unexpected error has ocurred.")
+            }
             return
         }
         this.currentMonthSubject.next(this.currentMonthSubject.value)
@@ -85,7 +114,13 @@ export class HomeComponent implements AfterViewInit {
         try {
             await this.dataRepository.removeEmployee(id)
         } catch (e) {
-            console.error(e)
+            if (e instanceof TypeError && e.message === "Failed to fetch") {
+                this.toast.error(
+                    "A connection error has ocurred while removing the employee.",
+                )
+            } else {
+                this.toast.error("An unexpected error has ocurred.")
+            }
             return
         }
         this.currentMonthSubject.next(this.currentMonthSubject.value)

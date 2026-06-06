@@ -7,7 +7,7 @@ import { provideRouter } from "@angular/router"
 import { provideBrowserGlobalErrorListeners } from "@angular/core"
 import { appConfig } from "./config/environments/development"
 import { DataRepositoryService } from "./core/services/data-repository.service"
-import {provideEnvironmentNgxMask} from "ngx-mask"
+import { provideEnvironmentNgxMask } from "ngx-mask"
 
 bootstrapApplication(App, {
     providers: [

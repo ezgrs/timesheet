@@ -1,3 +1,13 @@
 /* You can add global styles to this file, and also import other style files */
 
 @import "tailwindcss";
+
+.snackbar-error {
+    background-color: #d32f2f;
+    color: #fff;
+}
+
+.snackbar-success {
+    background-color: #2e7d32;
+    color: #fff;
+}
