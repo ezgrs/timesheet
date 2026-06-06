@@ -6,11 +6,12 @@ import {
     Validators,
 } from "@angular/forms"
 import { Employee } from "../../../domain/entities/employee"
+import { NgxMaskDirective } from "ngx-mask"
 
 @Component({
     selector: "app-employee-form",
     standalone: true,
-    imports: [ReactiveFormsModule],
+    imports: [ReactiveFormsModule, NgxMaskDirective],
     templateUrl: "./component.html",
 })
 export class EmployeeFormComponent {

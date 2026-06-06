@@ -7,6 +7,7 @@ import { provideRouter } from "@angular/router"
 import { provideBrowserGlobalErrorListeners } from "@angular/core"
 import { appConfig } from "./config/environments/development"
 import { DataRepositoryService } from "./core/services/data-repository.service"
+import {provideEnvironmentNgxMask} from "ngx-mask"
 
 bootstrapApplication(App, {
     providers: [
@@ -15,5 +16,6 @@ bootstrapApplication(App, {
         { provide: APP_CONFIG, useValue: appConfig },
         { provide: HTTP_CLIENT, useClass: HTTPClientService },
         DataRepositoryService,
+        provideEnvironmentNgxMask(),
     ],
 }).catch((err) => console.error(err))
