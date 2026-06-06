@@ -71,7 +71,23 @@ export class HomeComponent implements AfterViewInit {
         })
     }
 
-    addEmployee(employee: Employee) {}
+    async addEmployee(employee: Employee) {
+        try {
+            await this.dataRepository.addEmployee(employee)
+        } catch (e) {
+            console.error(e)
+            return
+        }
+        this.currentMonthSubject.next(this.currentMonthSubject.value)
+    }
 
-    removeEmployee(id: string) {}
+    async removeEmployee(id: string) {
+        try {
+            await this.dataRepository.removeEmployee(id)
+        } catch (e) {
+            console.error(e)
+            return
+        }
+        this.currentMonthSubject.next(this.currentMonthSubject.value)
+    }
 }

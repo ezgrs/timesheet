@@ -5,6 +5,7 @@ import { DataRepositoryUseCase } from "../../../../application/use-cases/data-re
 import { from, Observable } from "rxjs"
 import { Attendance } from "../../../../domain/entities/attendance"
 import { AppConfig } from "../../config/config"
+import { Employee } from "../../../../domain/entities/employee"
 
 @Injectable({ providedIn: "root" })
 export class DataRepositoryService {
@@ -22,6 +23,10 @@ export class DataRepositoryService {
 
     readAttendances(year: number, month: number): Observable<Attendance[]> {
         return from(this.repository.readAttendances(year, month))
+    }
+
+    async addEmployee(employee: Employee) {
+        await this.repository.addEmployee(employee)
     }
 
     async removeEmployee(id: string) {
